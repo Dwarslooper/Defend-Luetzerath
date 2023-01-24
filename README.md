@@ -14,7 +14,7 @@
 </div>
 
 ## Usage
-"
+
 ### Installation
 1. Download the latest release from the [releases](https://github.com/Dwarslooper/Invite-Scanner/releases) page.
 2. Put the file in the plugins folder of your server.
