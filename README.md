@@ -6,7 +6,7 @@
 <p align="center">A Minecraft minigame made in a week or so</p>
 
 <div align="center">
-    <a href="https://dsc.gg/dwars"><img src="https://img.shields.io/discord/687682739297845269?logo=discord&style=for-the-badge" alt="Discord"/></a>
+    <a href="https://dwarslooper.com/discord"><img src="https://img.shields.io/discord/687682739297845269?logo=discord&style=for-the-badge" alt="Discord"/></a>
     <br>
     <img src="https://img.shields.io/github/downloads/Dwarslooper/Defend-Luetzerath/total?style=for-the-badge" alt="Releases"/>
     <img src="https://img.shields.io/github/last-commit/Dwarslooper/Defend-Luetzerath?style=for-the-badge" alt="Last commit"/>
@@ -14,7 +14,7 @@
 </div>
 
 ## Usage
-
+"
 ### Installation
 1. Download the latest release from the [releases](https://github.com/Dwarslooper/Invite-Scanner/releases) page.
 2. Put the file in the plugins folder of your server.
@@ -35,3 +35,18 @@ We will review and help with all reasonable pull requests as long as you follow 
 - If you add Characters, initialize them with the Character Manager and a matching class extending a Character-Type class.
 - Character behaviour must only be defined in the `tick()` method of the Character's class.
 - Notice that all characters extending `Enemy` will spawn automatically
+
+## Credits
+[LimoDerEchte](https://github.com/cabaletta) for the StackCreator
+The [Paper Team](https://github.com/FabricMC) for [Paper](https://papermc.io)
+The Team of [FastAsyncWorldedit](https://intellectualsites.github.io/download/fawe.html) for the [FAWE Api](https://intellectualsites.github.io/fastasyncworldedit-documentation/api/api-usage.html)
+
+## Licensing
+This project is licensed under the [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.en.html). 
+
+If you use **ANY** code from the source:
+- You must disclose the source code of your modified work and the source code you took from this project. This means you are not allowed to use code from this project (even partially) in a closed-source and/or obfuscated application.
+- You must state clearly and obviously to all end users that you are using code from this project.
+- Your application must also be licensed under the same license.
+
+*If you have any other questions feel free to just ask in our [Discord](https://dwarslooper.com/discord) server.*
