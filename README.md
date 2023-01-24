@@ -20,9 +20,9 @@
 2. Put the file in the plugins folder of your server.
 3. Restart your server
 
-###Dependencies
-[Multiverse-Core]()
-[Fast-Async-Worldedit]()
+### Dependencies
+- [Multiverse-Core](https://dev.bukkit.org/projects/multiverse-core)
+- [Fast-Async-Worldedit](https://www.spigotmc.org/resources/fastasyncworldedit.13932/)
 ⚠️ _Make sure to have both plugins installed on their latest versions!_ ⚠️
 
 ## Contributions
