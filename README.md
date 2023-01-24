@@ -37,9 +37,9 @@ We will review and help with all reasonable pull requests as long as you follow 
 - Notice that all characters extending `Enemy` will spawn automatically
 
 ## Credits
-[LimoDerEchte](https://github.com/cabaletta) for the StackCreator
-The [Paper Team](https://github.com/FabricMC) for [Paper](https://papermc.io)
-The Team of [FastAsyncWorldedit](https://intellectualsites.github.io/download/fawe.html) for the [FAWE Api](https://intellectualsites.github.io/fastasyncworldedit-documentation/api/api-usage.html)
+- [LimoDerEchte](https://github.com/cabaletta) for the StackCreator
+- The [Paper Team](https://github.com/FabricMC) for [Paper](https://papermc.io)
+- The Team of [FastAsyncWorldedit](https://intellectualsites.github.io/download/fawe.html) for the [FAWE Api](https://intellectualsites.github.io/fastasyncworldedit-documentation/api/api-usage.html)
 
 ## Licensing
 This project is licensed under the [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.en.html). 
