@@ -1,0 +1,72 @@
+name: Defend-Luetzerath
+version: '${project.version}'
+main: com.dwarslooper.luetzidefense.Main
+api-version: 1.19
+prefix: DL
+depend: [ Multiverse-Core, WorldEdit ]
+authors: [ Dwarslooper ]
+description: Beschütze Lützerath vor RWE und rette so das Dorf!
+website: https://dwarslooper.com
+
+commands:
+  dl:
+    aliases:
+      - defendluetzerath
+      - defend
+      - luetzi
+
+permissions:
+  defluetzi.*:
+    default: op
+    description: Allows to to everything in the plugin. Its the all-permission-permission
+  defluetzi.game.join:
+    default: not op
+    description: Allows a user to join a game
+  defluetzi.game.kick:
+    default: op
+    description: Allows a user to kick other players from a game
+  defluetzi.game.create:
+    default: op
+    description: Allows to manually create a new game
+  defluetzi.game.reset:
+    default: op
+    description: Allows to reset a game at any given time
+  defluetzi.game.gui:
+    default: op
+    description: Allows to open a gui at any given time
+  defluetzi.game.setbal:
+    default: op
+    description: Allows a user to change the balance of points in a game
+  defluetzi.assets.add:
+    default: op
+    description: Allows a user to add Assets to an Arena
+  defluetzi.assets.delete:
+    default: op
+    description: Allows a user to delete Assets from an Arena
+  defluetzi.assets.other:
+    default: op
+    description: Allows a user to view Assets and their details for an Arena
+  defluetzi.arena.create:
+    default: op
+    description: Allows a user to create a new Arena (NOT a game)
+  defluetzi.arena.edit:
+    default: op
+    description: Allows a user to edit arenas
+  defluetzi.arena.delete:
+    default: op
+    description: Allows a user to delete an arena
+  defluetzi.reload:
+    default: op
+    description: Allows a user to reload the configuration files for the plugin
+  defluetzi.debug:
+    default: op
+    description: Permission for debugging. Prints output into console
+  defluetzi.translate:
+    default: op
+    description: Command to test translations, mainly for debugging purposes.
+  defluetzi.lang:
+    default: op
+    description: Allows a user to change the language of the plugin
+  defluetzi.admin:
+    default: op
+    description: Other admin commands use
