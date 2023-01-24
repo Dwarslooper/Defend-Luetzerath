@@ -26,6 +26,7 @@
 
 ⚠️ _Make sure to have both plugins installed on their latest versions!_ ⚠️
 
+
 ## Contributions
 We will review and help with all reasonable pull requests as long as you follow the guidelines below:
 
