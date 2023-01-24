@@ -8,7 +8,7 @@
 <div align="center">
     <a href="https://dwarslooper.com/discord"><img src="https://img.shields.io/discord/687682739297845269?logo=discord&style=for-the-badge" alt="Discord"/></a>
     <br>
-    <img src="https://img.shields.io/github/downloads/Dwarslooper/Defend-Luetzerath/total?style=for-the-badge" alt="Releases"/>
+    <img src="https://img.shields.io/github/v/tag/Dwarslooper/Defend-Luetzerath?style=for-the-badge" alt="Releases"/>
     <img src="https://img.shields.io/github/last-commit/Dwarslooper/Defend-Luetzerath?style=for-the-badge" alt="Last commit"/>
     <img src="https://img.shields.io/github/issues/Dwarslooper/Defend-Luetzerath?style=for-the-badge" alt="Issues open"/>
 </div>
@@ -25,7 +25,6 @@
 - [Fast-Async-Worldedit](https://www.spigotmc.org/resources/fastasyncworldedit.13932/)
 
 ⚠️ _Make sure to have both plugins installed on their latest versions!_ ⚠️
-
 
 ## Contributions
 We will review and help with all reasonable pull requests as long as you follow the guidelines below:
