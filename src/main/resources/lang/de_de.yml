@@ -6,9 +6,162 @@ enemy.rweworker: RWE Mitarbeiter
 enemy.police: Polizist
 
 gui.main: Hauptmenü
-gui.characters: Charaktere
-gui.shop: Shop
-gui.skills: Skills
-gui.manage: Einstellungen
+gui.characters: §2Charaktere
+gui.shop: §2Shop
+gui.skills: §2Skills
+gui.settings: §2Einstellungen
+gui.editarena: Arena Konfigurieren
+gui.close: §cSchließen
+gui.back: §cZurück
+gui.description.characters: §aHol dir mehr Aktivisten dazu
+gui.description.skills: §aLerne neue Skills
+gui.description.shop: §aKaufe speizielle Items
+gui.description.settings: §aKonfiguriere das Spiel
+gui.confirm: Aktion bestätigen
 
-text.cost: Preis
+gui.action.confirm: §a§lBestätigen
+gui.action.cancel: §c§lAbbrechen
+
+mapsetting.center.title: §eZentralpunk
+mapsetting.center.desc: §aVon wo die Map-Schematic geladen wird
+mapsetting.schem.title: §eSchematic
+mapsetting.schem.desc: §aMap-Schematic Datei
+mapsetting.schem.expl: '§eDie Schematic-Datei muss sich im arena-ordner befinden und "arena.schem" heissen. Hast du das getan, sollte dieser Schritt als erledigt angezeigt werden.'
+mapsetting.spawn.title: §eSpawn hinzufügen
+mapsetting.spawn.desc: §aSpawnpunkt für Gegner hinzufügen
+mapsetting.delete.title: §4Löschen
+mapsetting.delete.desc: §aDiese Arena dauerhaft löschen
+mapsetting.assets.title: §eAssets
+mapsetting.assets.desc: §aDie Assets für die Arena bearbeiten
+mapsetting.assets.expl: '§eUm die Assets zu bearbeiten nutze §6/dl assets %s%§e!'
+mapsetting.status.set: '§a✔ Gesetzt'
+mapsetting.status.unset: '§c❌ Nicht gesetzt'
+mapsetting.status.numset: '§a✔ (%s% / %s%)'
+mapsetting.status.numunset: '§c❌ (%s% / %s%)'
+mapsetting.helper.change: ' §e§o(Klicken zum Ändern)'
+mapsetting.signs.title: §eSchilder
+mapsetting.signs.desc: §aSchilder zum Spielbeitritt
+mapsetting.signs.right: '§e§o(Hinzufügen: Rechtsklick)'
+mapsetting.signs.left: '§e§o(Löschen: Linksklick)'
+mapsetting.signs.added: '§aSchild hinzugefügt!'
+mapsetting.signs.removed: '§aSchild entfernt!'
+mapsetting.signs.not_existing: '§cDieses Schild ist kein Schild dieser Arena!'
+mapsetting.signs.already_existing: '§cDieses Schild ist bereits registriert!'
+mapsetting.signs.look_at: '§cDu musst ein Schild anschauen!'
+mapsetting.signs.must_be_registered: '§cDie Arena muss registriert sein um die Schilder zu bearbeiten!'
+mapsetting.finish.title: §eArena Registrieren
+mapsetting.finish.desc0: §aWenn alles gemacht ist kannst
+mapsetting.finish.desc1: §adu die Arena hier registrieren
+mapsetting.finish.task0: §cDu hast ein oder mehrere Einstellungen noch nicht konfiguriert
+mapsetting.finish.task1: §c- Zentralpunkt
+mapsetting.finish.task2: §c- Schematic
+mapsetting.finish.task3: §c- 10+ Spawns
+mapsetting.finish.success: §aArena §6%s% §aerfolgreich registriert!
+
+game.create.already_existing: §cEin Spiel in der Arena %s% läuft bereits!
+game.create.success: §aDas Spiel in Arena %s% wurde erfolgreich gestartet
+game.reset.success: §aDas Spiel in Arena %s% wurde erfolgreich beendet
+game.spawn.error: §cDu musst ein gültiges Asset angeben!
+game.spawn.not_existing: §cEin Asset mit dem Namen %s% existiert nicht!
+game.setbal.must_be_integer: §cPunktestand muss eine Zahl sein!
+game.start.error: §cIn Arena §6%s% §cläuft aktuell kein Spiel!
+game.kick.specify_player: §cDu musst einen Spieler angeben!
+game.kick.no_such_player: §cDer Spieler §6%s% §cist nicht in diesem Spiel!
+game.kick.success: §cDer Spieler §6%s% §cwurde rausgeworfen!
+game.kick.message: §cDu wurdest aus §6%s% §crausgeworfen!
+
+game.message.already_in_game: §cDu bist bereits in diesem Spiel
+game.message.already_started: §cDas Spiel ist bereits gestartet!
+game.message.not_in_game: §cDu bist in keinem Spiel!
+game.message.joined: §aDu bist %s% §abeigetreten!
+game.message.left: §aDu hast %s% §averlassen!
+game.message.ratelimited: §cBitte warte einen Moment!
+
+
+game.status.inactive: §7§lINAKTIV
+game.status.waiting: §e§lSTARTET
+game.status.running: §a§lLÄUFT
+game.status.resetting: §c§lZURÜCKSETZEN
+game.status.unknown: §d§lUNKNOWN
+
+
+ingame.asset.buy: §e§o(Klicken zum kaufen §8§o| §6§o%s%◎§e§o)
+ingame.asset.too_expensive: §cDu hast nicht genug ◎ für §6%s%§c!
+ingame.asset.already_bought: §cDu hast §6%s% §cbereits gekauft!
+
+ingame.lost.title: "§c§lDORF GERÄUMT!"
+ingame.lost.subtitle: "§eBeschützt für §6%s%d§e, §6%s%h§e, §6%s%m§e, §6%s%s§e!"
+ingame.lost.chat: "§cOh nein! Das Dorf wurde geräumt! Aber gute Leistung, nächstes mal schaffst du es bestimmt länger! §4Die Arena wird in §620 §4Sekunden zurückgesetzt!"
+ingame.welcome.chat: "§aWillkommen im Dorf §6%s%§a! Helfe den anderen Aktivisten das Dorf vor RWE zu beschützen, durch das Lernen von neuen Skills, das Dazuholen von stärkeren Mitgliedern und das Bauen von Strukturen"
+ingame.welcome.title: §a§lWillkommen!
+ingame.welcome.subtitle: §eSchön dass du dabei bist, §6%s%§e!
+
+ingame.talk.water: §c§oAaah!
+ingame.talk.enemy:
+  - Keine Zeit zu reden!
+  - Einfach raus aus dem Dorf.
+  - Ich habe Arbeit
+  - Das Dorf wird geräumt
+ingame.talk.fellow:
+  - Tu alles was du kannst
+  - Wir müssen RWE stoppen!
+  - F*ck RWE
+  - Das Dorf bleibt!
+  - Räumung? Nicht mit uns!
+
+ingame.gui.shop.tnt.title: §cTNT
+ingame.gui.shop.molotow.title: §cMolotow
+ingame.gui.shop.water.title: §cWasser
+ingame.gui.shop.buff.title: §cBuff.
+ingame.gui.shop.sword.title: §cSchwert
+ingame.gui.shop.mud.title: §cMatsch
+
+ingame.gui.skills.pe.title: §cKampfsport
+ingame.gui.skills.pe.desc: §aFüge Gegnern mehr Schaden zu
+ingame.gui.skills.points.title: §cPunkte
+ingame.gui.skills.points.desc: §aSammle mehr punkte für deine Aktionen
+ingame.gui.skills.speed.title: §cSchnelligkeit
+ingame.gui.skills.speed.desc: §aErhöhe deine Schnelligkeit
+ingame.gui.skills.throw.title: §cWerfen
+ingame.gui.skills.throw.desc: §aWerfe Gegenstände weiter
+
+ingame.hud.start: §a§lSpiel starten
+ingame.hud.leave: §c§lSpiel verlassen
+
+confirm.delete_arena.prompt: §cArena §6§o%s% §cpermanent löschen?
+confirm.delete_arena.success: §aDie Arena §6%s% §cwurde erfolgreich gelöscht!
+
+confirm.delete_spawns.prompt: §cAlle Spawns in §6%s% §clöschen?
+confirm.delete_spawns.success: §aAlle Spawns in §6%s% §agelöscht!
+
+text.cost: '§aPreis§8: §6%s%◎'
+text.skills: '§aSkills§8: §e§o(Rechtsklick)'
+text.no_permission: '§cDir fehlt die Berechtigung §6%s%§c!'
+
+command.lang.error: §cDu musst eine Sprache angeben!
+command.lang.success: §aDie Sprache wurde auf §6%s% §agesetzt!
+command.reload.success: §aConfig-Dateien reloaded! Es kann sein dass ein Serverneustart erdorderlich ist um alle Änderungen zu übernehmen!
+command.translate.error: §cDu musst einen zu übersetzenden Text angeben!
+command.create.error: §cDu musst einen gültigen Arenen-Namen eingeben!
+command.create.already_exists: §cEine Arena mit diesem Namen existiert bereits!
+command.create.banned_chars: §cDer Name deiner Arena darf nicht nur aus Sonderzeichen bestehen!
+command.create.success: §aDeine Arena §6%s% §awurde erfolgreich erstellt! Bearbeite sie mit §e/dl edit §6%s%§a!
+command.edit.error: §cDu musst eine Areana angeben!
+command.edit.not_existing: §cDie Arena §6%s% §cexistiert nicht!
+command.asset.error: §cDu musst eine Arena und eine Aktion angeben!
+command.asset.not_existing: §cDas Asset §6%s% §cexistiert nicht!
+command.game.usage: '§cBenutze: §6%s%'
+
+setup.asset.exit: §aAsset Setup abgebrochen!
+setup.asset.invalid_params: §cDu musst einen gültigen Parameter angeben! (§6%s%§c)
+setup.asset.prompt: §cNeues Asset erstellen?
+setup.asset.delete.prompt: §cAsset §6%s% §cpermanent löschen?
+setup.asset.delete.success: §cAsset §6%s% §cgelöscht!
+setup.asset.success: §aNeues Asset mit ID §6%s% §aerfolgreich erstellt!
+setup.asset.step0: §aBitte gebe die ID des Assets im Chat ein. §e(EXIT zum Abbrechen)
+setup.asset.step1: §aBitte gebe den Anzeigenamen des Assets im Chat ein. §e(EXIT zum Abbrechen)
+setup.asset.step2: §aBitte gebe den Dateinamen der Schematic ein. §e(EXIT zum Abbrechen)
+setup.asset.step3: §aBitte gebe den Preis des Assets ein §e(EXIT zum Abbrechen)
+setup.asset.step4: '§aBitte stelle dich an den Punkt von wo aus die Schematic platziert werden soll und wo auch im Spiel das Asset angezeigt wird und gebe §6confirm §aein. §e(EXIT zum Abbrechen)'
+
+system.exception: §cOoops.. Es ist ein unerwarteter Fehler aufgetreten! Stacktrace wurde in der Konsole ausgegeben! Kontaktiere Dwarslooper und öffne ein Issue auf GitHub mit dem vollständigen Stacktrace.

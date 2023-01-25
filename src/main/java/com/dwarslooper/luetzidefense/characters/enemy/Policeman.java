@@ -1,5 +1,6 @@
 package com.dwarslooper.luetzidefense.characters.enemy;
 
+import com.dwarslooper.luetzidefense.Main;
 import com.dwarslooper.luetzidefense.characters.Activist;
 import com.dwarslooper.luetzidefense.characters.Enemy;
 import com.dwarslooper.luetzidefense.game.GameLobby;
@@ -10,6 +11,7 @@ import org.bukkit.entity.Villager;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import static com.dwarslooper.luetzidefense.Translate.translate;
@@ -30,25 +32,29 @@ public class Policeman extends Enemy {
         return e;
     }
 
-    Entity taskTarget;
+    HashMap<Villager, Entity> taskTarget = new HashMap<>();
 
     @Override
     public boolean tick(Villager e, GameLobby l) {
-        if(taskTarget == null) {
+        if(!taskTarget.containsKey(e)) {
             for (Entity entity : l.getProtestersSpawned()) {
                 if(entity.getLocation().distance(e.getLocation()) < 2) {
-                    if((Math.random() * 10) < 2) {
-                        if(entity instanceof LivingEntity entity1) taskTarget = entity1;
+                    if((Math.random() * 10) < 8) {
+                        if(entity instanceof LivingEntity entity1) {
+                            taskTarget.put(e, entity1);
+                            tick(e, l);
+                        }
                     }
                 }
             }
-        } else if(taskTarget.isDead()) {
-            taskTarget = null;
+        } else if(taskTarget.get(e).isDead()) {
+            taskTarget.remove(e);
             tick(e, l);
         } else {
-            e.getPathfinder().moveTo(taskTarget.getLocation());
-            if(e.getLocation().distanceSquared(taskTarget.getLocation()) < 2 && taskTarget instanceof LivingEntity livingEntity) {
+            e.getPathfinder().moveTo(taskTarget.get(e).getLocation());
+            if(e.getLocation().distanceSquared(taskTarget.get(e).getLocation()) < 2 && taskTarget.get(e) instanceof LivingEntity livingEntity) {
                 livingEntity.damage(4);
+                taskTarget.remove(e);
             }
         }
         return true;

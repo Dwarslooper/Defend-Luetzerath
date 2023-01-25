@@ -2,6 +2,7 @@ package com.dwarslooper.luetzidefense.game;
 
 import com.dwarslooper.luetzidefense.Main;
 import com.dwarslooper.luetzidefense.StackCreator;
+import com.dwarslooper.luetzidefense.Utils;
 import com.dwarslooper.luetzidefense.arena.Arena;
 import com.dwarslooper.luetzidefense.arena.GameAsset;
 import com.dwarslooper.luetzidefense.characters.Character;
@@ -59,6 +60,10 @@ public class GameLobby {
         isIngame = true;
         spawnDelay = 80;
         for(GameAsset asset : getArena().getAssets()) {
+            if(!asset.verifyFiles()) {
+                Main.getInstance().getServer().getConsoleSender().sendMessage(Main.PREFIX + "§cGameAsset §6" + asset.getId() + " §ccould not be registered in arena §6" + getArena().getId() + " §cbecause the Files could not be found! Make sure you have the Asset file §f" + asset.getFileName() + " §cand the broken version §f" + Utils.replaceLast(asset.getFileName(), ".schem", "_broken.schem") + " §cin the §6assets §cfolder for this arena!");
+                return;
+            }
             ArmorStand display = (ArmorStand) arena.getCenter().getWorld().spawnEntity(asset.getDisplayAt(), EntityType.ARMOR_STAND);
             display.setSmall(true);
             display.setBasePlate(false);
@@ -169,7 +174,7 @@ public class GameLobby {
                 Character c = characters.get(randomNum);
                 Main.CM.getBounds().put(e, c);
                 if(c.manageEntity(e) == null) {
-                    Main.getInstance().getServer().getConsoleSender().sendMessage("§cWarning! Changes have been made to characters, but character §6" + c.getDisplay().replaceFirst("::", "") + " §creturned null when initializing! Maybe the §fmanageEntity() §cmethod is not configured properly?!");
+                    Main.getInstance().getServer().getConsoleSender().sendMessage(Main.PREFIX + "§cWarning! Changes have been made to characters, but character §6" + c.getDisplay().replaceFirst("::", "") + " §creturned null when initializing! Maybe the §fmanageEntity() §cmethod is not configured properly?!");
                 }
                 enemiesSpawned.add(e);
                 deleteOnReset.add(e);
@@ -269,6 +274,8 @@ public class GameLobby {
 
         if(isLost) return;
         isLost = true;
+
+        isIngame = false;
 
         getArena().setStatus(3);
         getArena().updateSigns();

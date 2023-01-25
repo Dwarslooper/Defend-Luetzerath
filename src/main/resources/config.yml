@@ -1,2 +1,15 @@
+# =====================================================================================================
+# has-init: System related file. Used to track if the server has been started with the plugin before.
+# language: language file name for translations. You can change this ingame as well.
+# min_enemy_spawns: The minimum of spawns that have to be set to register a new arena.
+# difficulty: Experimental feature. Changing this number might cause a giant amount of enemys to spawn.
+# ratelimit: Specifies the time a user has to wait between specific actions (in ticks)
+# =====================================================================================================
+# © Dwarslooper 2023
+# =====================================================================================================
+
 has-init: false
-language: DE
+language: de_de
+min_enemy_spawns: 10
+difficulty: 4
+ratelimit: 40

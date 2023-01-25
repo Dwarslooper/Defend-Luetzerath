@@ -42,6 +42,10 @@ public class GameAsset {
         return id;
     }
 
+    public boolean verifyFiles() {
+        return (getFile() != null && getBrokenFile() != null);
+    }
+
     public File getFile() {
         return ArenaManager.getByName(arena).getAssetFile(fileName);
     }

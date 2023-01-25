@@ -1,0 +1,167 @@
+activist.monk: Dark Monk
+activist.aggressive: The Aggressive
+activist.protester: Protester
+activist.chemist: Chemist
+enemy.rweworker: RWE Worker
+enemy.police: Policeman
+
+gui.main: Main Menu
+gui.characters: Charakters
+gui.shop: Shop
+gui.skills: Skills
+gui.manage: Settings
+gui.editarena: Edit Arena
+gui.close: §cClose
+gui.back: §cBack
+gui.description.characters: §aGet more Protesters
+gui.description.skills: §aLearn new Skills
+gui.description.shop: §aBuy special Items
+gui.description.settings: §aConfigure the game
+gui.confirm: Aktion bestätigen
+
+gui.action.confirm: §a§lConfirm
+gui.action.cancel: §c§lCancel
+
+mapsetting.center.title: §eCenter
+mapsetting.center.desc: §aWhere the map is loaded from
+mapsetting.schem.title: §eSchematic
+mapsetting.schem.desc: §aMap-Schematic File
+mapsetting.schem.expl: '§eThe schematic file has to be located in the folder of the arena and has to be named "arena.schem".'
+mapsetting.spawn.title: §eAdd spawn
+mapsetting.spawn.desc: §aAdd spawnpoint for enemys
+mapsetting.delete.title: §4Delete
+mapsetting.delete.desc: §aPermanently delete this arena
+mapsetting.assets.title: §eAssets
+mapsetting.assets.desc: §aEdit assets for this arena
+mapsetting.assets.expl: '§eTo edit the assets, use §6/dl assets %s%§e!'
+mapsetting.status.set: '§a✔ Set'
+mapsetting.status.unset: '§c❌ Unset'
+mapsetting.status.numset: '§a✔ (%s% / %s%)'
+mapsetting.status.numunset: '§c❌ (%s% / %s%)'
+mapsetting.helper.change: ' §e§o(Click to change)'
+mapsetting.signs.title: §eSigns
+mapsetting.signs.desc: §aSigns for joining a game
+mapsetting.signs.right: '§e§o(Add: Right-Click)'
+mapsetting.signs.left: '§e§o(Delete: Left-Click)'
+mapsetting.signs.added: '§aSign added!'
+mapsetting.signs.removed: '§aSign removed!'
+mapsetting.signs.not_existing: '§cThis is not a sign of this arena!'
+mapsetting.signs.already_existing: '§cThis sign is already registered!'
+mapsetting.signs.look_at: '§cYou have to look at a sign!'
+mapsetting.signs.must_be_registered: '§cThe arena has to be registered to edit the signs!'
+mapsetting.finish.title: §eRegister arena
+mapsetting.finish.desc0: §aIf everything is ready, you
+mapsetting.finish.desc1: §acan register the arena here
+mapsetting.finish.task0: §cYou have one or more features not configured!
+mapsetting.finish.task1: §c- Center point
+mapsetting.finish.task2: §c- Schematic
+mapsetting.finish.task3: §c- 10+ spawns
+mapsetting.finish.success: §aArena §6%s% §aregistered successfully!
+
+game.create.already_existing: §cThere already is a running game in §6%s%§c!
+game.create.success: §aThe game in arena §6%s% §cwas started successfully!
+game.reset.success: §aThe game in arena §6%s% §cwas ended successfully!
+game.spawn.error: §cYou have to specify a valid asset!
+game.spawn.not_existing: §cAn asset with name §6%s% §cdoes not exist!
+game.setbal.must_be_integer: §cIngame points have to be a number!
+game.start.error: §cThere is currently no game running in §6%s%§c!
+game.kick.specify_player: §cYou have to specify a game!
+game.kick.no_such_player: §cThe player §6%s% §cis not in this game!
+game.kick.success: §cThe player §6%s% §cwas kicked from the game!
+game.kick.message: §cYou have been kicked from §6%s%§c!
+
+game.message.already_in_game: §cYou are already in this game!
+game.message.already_started: §cThis game has already started!
+game.message.not_in_game: §cYou are not in a game!
+game.message.joined: §aYou have joined %s%§a!
+game.message.left: §aYou left %s%§a!
+game.message.ratelimited: §cPlease wait a bit!
+
+
+game.status.inactive: §7§lINACTIVE
+game.status.waiting: §e§lSTARTING
+game.status.running: §a§lRUNNING
+game.status.resetting: §c§lRESETTING
+game.status.unknown: §d§lUNKNOWN
+
+
+ingame.asset.buy: §e§o(Click to buy §8§o| §6§o%s%◎§e§o)
+ingame.asset.too_expensive: §cYou dont have enough ◎ for §6%s%§c!
+ingame.asset.already_bought: §cYou already bought §6%s%§c!
+
+ingame.lost.title: "§c§lVILLAGE EVACUATED!"
+ingame.lost.subtitle: "§eVillage saved for §6%s%d§e, §6%s%h§e, §6%s%m§e, §6%s%s§e!"
+ingame.lost.chat: "§cOh no! The village has been evacuated! But not bad! §4The arena will be resetted in §620 §4seconds!"
+ingame.welcome.chat: "§aWelcome to the village §6%s%§a! Help the activist protect the village from RWE, through building assets, leveling skills and getting more activists!"
+ingame.welcome.title: §a§lWelcome!
+ingame.welcome.subtitle: §eNice to see you, §6%s%§e!
+
+ingame.talk.water: §c§oAaah!
+ingame.talk.enemy:
+  - I have no time to talk
+  - Just get out.
+  - I have work to do
+  - The village will be evacuated
+ingame.talk.fellow:
+  - Do everything you can
+  - We have to stop RWE!
+  - F*ck RWE
+  - The village stays!
+  - EVACUATION? Not with us!
+
+ingame.gui.shop.tnt.title: §cTNT
+ingame.gui.shop.molotow.title: §cMolotow
+ingame.gui.shop.water.title: §cWater
+ingame.gui.shop.buff.title: §cBuff.
+ingame.gui.shop.sword.title: §cSword
+ingame.gui.shop.mud.title: §cMud
+
+ingame.gui.skills.pe.title: §cMaterial Arts
+ingame.gui.skills.pe.desc: §aDo more damage against enemys
+ingame.gui.skills.points.title: §cPoints
+ingame.gui.skills.points.desc: §aGet more points for specific actions
+ingame.gui.skills.speed.title: §cSpeed
+ingame.gui.skills.speed.desc: §aIncrease your speed
+ingame.gui.skills.throw.title: §cThrowing
+ingame.gui.skills.throw.desc: §aThrow things further
+
+ingame.hud.start: §a§lStart game
+ingame.hud.leave: §c§lLeave game
+
+confirm.delete_arena.prompt: §cDelete arena §6§o%s% §cpermanently?
+confirm.delete_arena.success: §aArena §6%s% §chas been deleted successfully!
+
+confirm.delete_spawns.prompt: §cDelete all spawns in §6%s% §c?
+confirm.delete_spawns.success: §aAll spawns deleted in §6%s%§a!
+
+text.cost: '§aCost§8: §6%s%◎'
+text.skills: '§aSkills§8: §e§o(Right-Click)'
+text.no_permission: '§cYou are lacking the permission node: §6%s%§c!'
+
+command.lang.error: §cYou have to specify a language!
+command.lang.success: §aThe language has been set to §6%s%§a!
+command.reload.success: §aConfig files reloaded! You might have to restart the server to apply all changes!
+command.translate.error: §cYou have to specify a text to be translated!
+command.create.error: §cYou have to specify a valid arena name!
+command.create.already_exists: §cAn arena with this name already exists!
+command.create.banned_chars: §cThe name of your arena must not only contain special characters!
+command.create.success: §aYour arena §6%s% §ahas been created successfully! Edit it with §e/dl edit §6%s%§a!
+command.edit.error: §cYou have to specify a valid arena!
+command.edit.not_existing: §cThe arena §6%s% §cdoes not exist!
+command.asset.error: §cYou have to specify an arena as well as an action!
+command.asset.not_existing: §cThe asset §6%s% §cdoes not exist!
+command.game.usage: '§cUse: §6%s%'
+
+setup.asset.exit: §aAsset setup cancelled!
+setup.asset.invalid_params: §cYou have to specify a valid parameter! (§6%s%§c)
+setup.asset.prompt: §cCreate new asset?
+setup.asset.delete.prompt: §cDelete asset §6%s% §cpermanently?
+setup.asset.delete.success: §cAsset §6%s% §cdeleted successfully!
+setup.asset.success: §aA new asset with ID §6%s% §ahas been created successfully!
+setup.asset.step0: §aEnter the ID of the asset in chat. §e(EXIT to cancel)
+setup.asset.step1: §aEnter the display name of the asset in chat. §e(EXIT to cancel)
+setup.asset.step2: §aEnter the file name of the schematic in chat. §e(EXIT to cancel)
+setup.asset.step3: §aEnter the price of the asset in chat §e(EXIT to cancel)
+setup.asset.step4: '§aBitte stelle dich an den Punkt von wo aus die Schematic platziert werden soll und wo auch im Spiel das Asset angezeigt wird und gebe §6confirm §aein. §e(EXIT to cancel)'
+
+system.exception: §cOoops.. An unknown error has occured! Please contact the developer and open an issue on github containing the exception printed in the console!

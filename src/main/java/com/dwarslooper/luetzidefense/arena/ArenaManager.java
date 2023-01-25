@@ -45,7 +45,7 @@ public class ArenaManager {
             int minSpawns = Main.getInstance().getConfig().getInt("min_enemy_spawns");
             if(enemySpawns.size() < minSpawns) return;
             if(!arena.getBoolean("isfinished")) {
-                Main.getInstance().getServer().getConsoleSender().sendMessage("§cArena §6" + id_ + " §chad all settings set but is not registered! To use arena you have to register it in the edit GUI!");
+                Main.getInstance().getServer().getConsoleSender().sendMessage(Main.PREFIX + "§cArena §6" + id_ + " §chad all settings set but is not registered! To use arena you have to register it in the edit GUI!");
                 return;
             }
 
@@ -53,7 +53,7 @@ public class ArenaManager {
         }
 
         for(Arena a : ARENAS.values()) {
-            Main.getInstance().getServer().getConsoleSender().sendMessage("Arena registered: §6" + a.getName());
+            Main.getInstance().getServer().getConsoleSender().sendMessage(Main.PREFIX + "§aArena registered: §6" + a.getName());
         }
 
     }

@@ -78,7 +78,7 @@ public class ClickListener implements Listener {
                         if(finalLobby.getBalance() >= activist.getCost()) {
                             Villager e0 = (Villager) e.getWhoClicked().getWorld().spawnEntity(e.getWhoClicked().getLocation(), EntityType.VILLAGER);
                             if (character.manageEntity(e0) == null) {
-                                Main.getInstance().getServer().getConsoleSender().sendMessage("§cWarning! Changes have been made to characters, but character §6" + character.getDisplay().replaceFirst("::", "") + " §creturned null when initializing! Maybe the §fmanageEntity() §cmethod is not configured properly?!");
+                                Main.getInstance().getServer().getConsoleSender().sendMessage(Main.PREFIX + "§cWarning! Changes have been made to characters, but character §6" + character.getDisplay().replaceFirst("::", "") + " §creturned null when initializing! Maybe the §fmanageEntity() §cmethod is not configured properly?!");
                             }
                             finalLobby.getProtestersSpawned().add(e0);
                             finalLobby.getDeleteOnReset().add(e0);
@@ -324,13 +324,13 @@ public class ClickListener implements Listener {
                     GameAssetManager.editing_asset.remove(((Player) e.getWhoClicked()));
                 } else if(e.getInventory().getItem(13).getItemMeta().getLore().get(0).equalsIgnoreCase("DELETE_SPAWNS")) {
                     Player p = ((Player) e.getWhoClicked());
-                    GameAsset asset = GameAssetManager.editing_asset.get(((Player) e.getWhoClicked()));
-                    Main.config.getConfiguration().set("arenas." + asset.getArena() + ".spawns", null);
-                    Main.config.getConfiguration().set("arenas." + asset.getArena() + ".isfinished", false);
+                    String a = ArenaManager.currently_editing.get(((Player) e.getWhoClicked()));
+                    Main.config.getConfiguration().set("arenas." + a + ".spawns", null);
+                    Main.config.getConfiguration().set("arenas." + a + ".isfinished", false);
                     Main.config.save();
                     ArenaManager.reload();
                     e.getWhoClicked().closeInventory();
-                    p.sendMessage(Main.PREFIX + translate("::confirm.delete_spawns.success", asset.getId()));
+                    p.sendMessage(Main.PREFIX + translate("::confirm.delete_spawns.success", a));
                     GameAssetManager.editing_asset.remove(((Player) e.getWhoClicked()));
                 }
             } else if(e.getCurrentItem().getType() == Material.RED_TERRACOTTA) {
