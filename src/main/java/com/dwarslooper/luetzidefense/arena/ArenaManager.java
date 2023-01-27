@@ -14,6 +14,14 @@ public class ArenaManager {
     public static List<String> arena_list = new ArrayList<>();
 
     public static void reload() {
+
+        if(!Main.config.getConfiguration().isSet("arenas")) {
+            Main.config.getConfiguration().createSection("arenas");
+            Main.config.save();
+            ArenaManager.reload();
+            return;
+        }
+
         ARENAS.clear();
 
         arena_list = Main.config.getConfiguration().getConfigurationSection("arenas").getKeys(false).stream().toList();
