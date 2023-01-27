@@ -321,8 +321,10 @@ public class MainCommand implements CommandExecutor, TabCompleter {
                 for(File f : Objects.requireNonNull(Translate.folder.listFiles())) {
                     list.add(f.getName().replace(".yml", ""));
                 }
-            } else if(args[0].equalsIgnoreCase("edit") || args[0].equalsIgnoreCase("game") || args[0].equalsIgnoreCase("assets")) {
+            } else if(args[0].equalsIgnoreCase("edit") || args[0].equalsIgnoreCase("assets")) {
                 list.addAll(ArenaManager.arena_list);
+            } else if(args[0].equalsIgnoreCase("game")) {
+                list.addAll(ArenaManager.ARENAS.keySet());
             }
         } else if(args.length == 3) {
             if(args[0].equalsIgnoreCase("game")) {

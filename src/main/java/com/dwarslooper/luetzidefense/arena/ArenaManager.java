@@ -83,9 +83,6 @@ public class ArenaManager {
 
     private static boolean validate(Object... values) {
         for(Object o : values) {
-            if(o instanceof Collection list) {
-                if(list.isEmpty()) return false;
-            }
             if(o == null) return false;
         }
         return true;

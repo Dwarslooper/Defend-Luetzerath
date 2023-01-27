@@ -254,33 +254,39 @@ public class ClickListener implements Listener {
                 e.getWhoClicked().closeInventory();
             } else if(e.getCurrentItem().getItemMeta().getDisplayName().contains(translate("::mapsetting.finish.title"))) {
 
+                int min_spawns = Main.getInstance().getConfig().getInt("min_enemy_spawns");
+
                 int complete = 0;
                 if(section.getLocation("center") != null) {
                     complete += 1;
                 }
                 if(section.getList("spawns") != null) {
-                    if(section.getList("spawns").size() >= 10) {
+                    if(section.getList("spawns").size() >= min_spawns) {
                         complete += 1;
                     }
                 }
                 if(new File(Main.getInstance().getDataFolder(),"arenas/" + ARENA_ID + "/arena.schem").exists()) {
                     complete += 1;
                 }
-                if(section.getList("signs") != null) {
-                    if(section.getList("signs").size() > 0) {
-                        complete += 1;
-                    }
+
+                if(section.getBoolean("isfinished")) {
+                    e.getWhoClicked().sendMessage(Main.PREFIX + translate("::mapsetting.finish.already_done", ARENA_ID));
+                    e.getWhoClicked().closeInventory();
+                    return;
                 }
 
-                if(complete == 4) {
+                if(complete == 3) {
                     section.set("isfinished", true);
                     Main.config.save();
                     e.getWhoClicked().sendMessage(Main.PREFIX + translate("::mapsetting.finish.success", ARENA_ID));
+                    GuiUtils.open(new EditGUI(), ((Player) e.getWhoClicked()));
+                    ArenaManager.reload();
                 } else {
                     e.getWhoClicked().sendMessage(Main.PREFIX + translate("::mapsetting.finish.task0"));
                     e.getWhoClicked().sendMessage(Main.PREFIX + translate("::mapsetting.finish.task1"));
                     e.getWhoClicked().sendMessage(Main.PREFIX + translate("::mapsetting.finish.task2"));
-                    e.getWhoClicked().sendMessage(Main.PREFIX + translate("::mapsetting.finish.task3"));
+                    e.getWhoClicked().sendMessage(Main.PREFIX + translate("::mapsetting.finish.task3",  + min_spawns + ""));
+                    e.getWhoClicked().closeInventory();
                 }
 
             }

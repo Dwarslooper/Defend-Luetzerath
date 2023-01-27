@@ -12,6 +12,7 @@ import org.bukkit.inventory.Inventory;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import static com.dwarslooper.luetzidefense.Translate.translate;
 
@@ -44,7 +45,7 @@ public class EditGUI extends ClickGUI{
         int minSpawns = Main.getInstance().getConfig().getInt("min_enemy_spawns");
 
         String isSignsSet = translate("::mapsetting.status.numset", "0","0");
-        if(section.isSet("signs")) isSignsSet = translate("::mapsetting.status.numset", String.valueOf(section.getList("signs").size()),"0");
+        if(section.isSet("signs")) isSignsSet = translate("::mapsetting.status.numset", String.valueOf(section.getList("signs") != null ? Objects.requireNonNull(section.getList("signs")).size() : 0),"0");
 
         String isFinished = section.getBoolean("isfinished") ? set : unset;
 

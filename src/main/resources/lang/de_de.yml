@@ -55,8 +55,9 @@ mapsetting.finish.desc1: §adu die Arena hier registrieren
 mapsetting.finish.task0: §cDu hast ein oder mehrere Einstellungen noch nicht konfiguriert
 mapsetting.finish.task1: §c- Zentralpunkt
 mapsetting.finish.task2: §c- Schematic
-mapsetting.finish.task3: §c- 10+ Spawns
+mapsetting.finish.task3: §c- %s%+ Spawns
 mapsetting.finish.success: §aArena §6%s% §aerfolgreich registriert!
+mapsetting.finish.already_done: §cDie Arena §6%s% §cist bereits registriert!
 
 game.create.already_existing: §cEin Spiel in der Arena %s% läuft bereits!
 game.create.success: §aDas Spiel in Arena %s% wurde erfolgreich gestartet
@@ -129,7 +130,7 @@ ingame.hud.start: §a§lSpiel starten
 ingame.hud.leave: §c§lSpiel verlassen
 
 confirm.delete_arena.prompt: §cArena §6§o%s% §cpermanent löschen?
-confirm.delete_arena.success: §aDie Arena §6%s% §cwurde erfolgreich gelöscht!
+confirm.delete_arena.success: §aDie Arena §6%s% §awurde erfolgreich gelöscht!
 
 confirm.delete_spawns.prompt: §cAlle Spawns in §6%s% §clöschen?
 confirm.delete_spawns.success: §aAlle Spawns in §6%s% §agelöscht!

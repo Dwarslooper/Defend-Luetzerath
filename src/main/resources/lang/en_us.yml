@@ -55,8 +55,9 @@ mapsetting.finish.desc1: §acan register the arena here
 mapsetting.finish.task0: §cYou have one or more features not configured!
 mapsetting.finish.task1: §c- Center point
 mapsetting.finish.task2: §c- Schematic
-mapsetting.finish.task3: §c- 10+ spawns
+mapsetting.finish.task3: §c- %s%+ spawns
 mapsetting.finish.success: §aArena §6%s% §aregistered successfully!
+mapsetting.finish.already_done: §cThe arena §6%s% §cis already registered!
 
 game.create.already_existing: §cThere already is a running game in §6%s%§c!
 game.create.success: §aThe game in arena §6%s% §cwas started successfully!
@@ -129,7 +130,7 @@ ingame.hud.start: §a§lStart game
 ingame.hud.leave: §c§lLeave game
 
 confirm.delete_arena.prompt: §cDelete arena §6§o%s% §cpermanently?
-confirm.delete_arena.success: §aArena §6%s% §chas been deleted successfully!
+confirm.delete_arena.success: §aArena §6%s% §ahas been deleted successfully!
 
 confirm.delete_spawns.prompt: §cDelete all spawns in §6%s% §c?
 confirm.delete_spawns.success: §aAll spawns deleted in §6%s%§a!

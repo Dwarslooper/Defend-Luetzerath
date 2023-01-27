@@ -23,6 +23,9 @@ public class Setup {
         Main.config.set(line + ".id", name);
         Main.config.set(line + ".name", "'" + input + "'");
         Main.config.set(line + ".isfinished", false);
+        Main.config.getConfiguration().createSection(line + ".assets");
+        Main.config.getConfiguration().createSection(line + ".spawns");
+        Main.config.getConfiguration().createSection(line + ".signs");
         new File(Main.getInstance().getDataFolder(), "/arenas/" + name + "/assets").mkdirs();
 
         Main.config.save();
