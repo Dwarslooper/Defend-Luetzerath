@@ -37,7 +37,8 @@ We will review and help with all reasonable pull requests as long as you follow 
 - Notice that all characters extending `Enemy` will spawn automatically
 
 ## Credits
-- [LimoDerEchte](https://www.youtube.com/channel/UCEZPajhinrfyqoL7BgRld_g) for the StackCreator
+- [LimoDerEchte](https://github.com/LimoDerEchte) for the StackCreator
+- [TogaHimikoHacks](https://github.com/TogaHimikoHacks) for some Translations
 - The [Paper Team](https://github.com/papermc) for [Paper](https://papermc.io)
 - The Team of [FastAsyncWorldedit](https://intellectualsites.github.io/download/fawe.html) for the [FAWE Api](https://intellectualsites.github.io/fastasyncworldedit-documentation/api/api-usage.html)
 
