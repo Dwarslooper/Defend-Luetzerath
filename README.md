@@ -35,6 +35,7 @@ We will review and help with all reasonable pull requests as long as you follow 
 - If you add Characters, initialize them with the Character Manager and a matching class extending a Character-Type class.
 - Character behaviour must only be defined in the `tick()` method of the Character's class.
 - Notice that all characters extending `Enemy` will spawn automatically
+- Before creating a pull request, remove all always-on-debug-code like redundant logging or chat messages.
 
 ## Credits
 - [LimoDerEchte](https://github.com/LimoDerEchte) for the StackCreator
