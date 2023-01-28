@@ -13,6 +13,9 @@
     <img src="https://img.shields.io/github/issues/Dwarslooper/Defend-Luetzerath?style=for-the-badge" alt="Issues open"/>
 </div>
 
+# Documentation
+Take a look at our [documentations](https://dwarslooper.com/documentation/defend-luetzerath/#/) for this project!
+
 ## Usage
 
 ### Installation
