@@ -9,7 +9,7 @@
 # =====================================================================================================
 
 has-init: false
-language: de_de
+language: en_us
 min_enemy_spawns: 10
 difficulty: 4
 ratelimit: 40
