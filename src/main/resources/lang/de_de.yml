@@ -28,7 +28,9 @@ mapsetting.schem.title: §eSchematic
 mapsetting.schem.desc: §aMap-Schematic Datei
 mapsetting.schem.expl: '§eDie Schematic-Datei muss sich im arena-ordner befinden und "arena.schem" heissen. Hast du das getan, sollte dieser Schritt als erledigt angezeigt werden.'
 mapsetting.spawn.title: §eSpawn hinzufügen
-mapsetting.spawn.desc: §aSpawnpunkt für Gegner hinzufügen
+mapsetting.spawn.desc: §aSpawnpunkt für Gegner bearbeiten
+mapsetting.spawn.right: '§e§o(Hinzufügen: Rechtsklick)'
+mapsetting.spawn.left: '§e§o(Alle löschen: Linksklick)'
 mapsetting.delete.title: §4Löschen
 mapsetting.delete.desc: §aDiese Arena dauerhaft löschen
 mapsetting.assets.title: §eAssets

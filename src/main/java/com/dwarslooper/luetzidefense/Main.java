@@ -84,7 +84,7 @@ public final class Main extends JavaPlugin {
 
         getServer().getConsoleSender().sendMessage(PREFIX + "§eSuccessfully enabled DefendLuetzi!");
         getServer().getConsoleSender().sendMessage(PREFIX + "§cPlease notice this is a dev build! Do not use this on production!");
-        getServer().getConsoleSender().sendMessage(PREFIX + "§eFor more information join my Discord: §9§n§odsc.gg/dwars");
+        getServer().getConsoleSender().sendMessage(PREFIX + "§eFor more information join my Discord: §9§n§odsc.gg/dwars§r");
         getServer().getConsoleSender().sendMessage(PREFIX + "§eLützi bleibt!");
 
         getServer().getConsoleSender().sendMessage(PREFIX + "§f--==[§a+§f]==--".repeat(4));
