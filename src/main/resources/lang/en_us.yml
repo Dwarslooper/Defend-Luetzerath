@@ -6,10 +6,10 @@ enemy.rweworker: RWE Worker
 enemy.police: Policeman
 
 gui.main: Main Menu
-gui.characters: Charakters
-gui.shop: Shop
-gui.skills: Skills
-gui.manage: Settings
+gui.characters: §2Charakters
+gui.shop: §2Shop
+gui.skills: §2Skills
+gui.settings: §2Settings
 gui.editarena: Edit Arena
 gui.close: §cClose
 gui.back: §cBack

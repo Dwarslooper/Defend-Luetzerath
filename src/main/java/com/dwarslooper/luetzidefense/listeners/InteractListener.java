@@ -102,7 +102,7 @@ public class InteractListener implements Listener {
                         bomb.setCanPlayerPickup(false);
                         bomb.setCanMobPickup(false);
                         bomb.setHealth(1000);
-                        bomb.setVelocity((e.getPlayer().getLocation().getDirection().multiply(0.5)).multiply(lobby.getSkillsThrow().get(e.getPlayer())));
+                        bomb.setVelocity((e.getPlayer().getLocation().getDirection().multiply(0.5)).multiply(lobby.getSkillsThrow().get(e.getPlayer()) + 1));
                         ShopGUI.cancelExplosion.add(bomb);
                         lobby.getDeleteOnReset().add(bomb);
                         e.setCancelled(true);
@@ -126,7 +126,7 @@ public class InteractListener implements Listener {
                         bomb.setCanMobPickup(false);
                         bomb.setHealth(1000);
                         bomb.setFireTicks(2000);
-                        bomb.setVelocity((e.getPlayer().getLocation().getDirection().multiply(0.5)).multiply(lobby.getSkillsThrow().get(e.getPlayer())));
+                        bomb.setVelocity((e.getPlayer().getLocation().getDirection().multiply(0.5)).multiply(lobby.getSkillsThrow().get(e.getPlayer()) + 1));
                         e.setCancelled(true);
                         lobby.getDeleteOnReset().add(bomb);
 
@@ -159,7 +159,7 @@ public class InteractListener implements Listener {
                         bomb.setCanPlayerPickup(false);
                         bomb.setCanMobPickup(false);
                         bomb.setHealth(1000);
-                        bomb.setVelocity((e.getPlayer().getLocation().getDirection().multiply(0.5)).multiply(lobby.getSkillsThrow().get(e.getPlayer())));
+                        bomb.setVelocity((e.getPlayer().getLocation().getDirection().multiply(0.5)).multiply(lobby.getSkillsThrow().get(e.getPlayer()) + 1));
                         e.setCancelled(true);
                         lobby.getDeleteOnReset().add(bomb);
                         itemThrower.put(bomb, e.getPlayer());
