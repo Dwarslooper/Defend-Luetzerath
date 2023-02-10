@@ -13,3 +13,4 @@ language: de_de
 min_enemy_spawns: 10
 difficulty: 4
 ratelimit: 40
+version: 1
