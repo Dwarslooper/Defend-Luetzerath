@@ -17,11 +17,21 @@ import com.dwarslooper.luetzidefense.gui.GuiUtils;
 import com.dwarslooper.luetzidefense.listeners.*;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import static com.dwarslooper.luetzidefense.game.LobbyHandler.GAMES;
@@ -37,6 +47,13 @@ public final class Main extends JavaPlugin {
     public static Config config;
     public static Config signs;
 
+
+    public static boolean upToDate = true;
+    public static int configVersion = -1;
+    public static int updateConfigVersion = -2;
+    public static String updateMessage = "";
+
+
     @Override
     public void saveDefaultConfig() {
         super.saveDefaultConfig();
@@ -46,14 +63,34 @@ public final class Main extends JavaPlugin {
     public void onEnable() {
         // Plugin startup logic
 
-        LOGGER = Bukkit.getLogger();
+        if(!validateIfPluginShouldStart()) {
+            return;
+        }
 
+
+        LOGGER = Bukkit.getLogger();
         instance = this;
+        saveDefaultConfig();
+        SettingManager.checkConfig();
+        PREFIX = "§8[§cD§6L§8] ";
+
+
+        try {
+            InputStream is = getResource("config.yml");
+            FileConfiguration comp1 = YamlConfiguration.loadConfiguration(new InputStreamReader(is));
+            FileConfiguration comp2 = getConfig();
+            updateConfigVersion = comp1.getInt("version");
+            configVersion = comp2.getInt("version");
+            updateMessage = PREFIX + "§eYour config version is out of date! You are §7" + (Main.updateConfigVersion - Main.configVersion) + " §eversions behind! §7Delete the config file and adjust the settings§7!";
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         config = new Config("data.yml", getDataFolder());
         signs = new Config("signs.yml", getDataFolder());
         Translate.init();
+        SettingManager.loadSettings();
 
-        PREFIX = "§8[§cD§6L§8] ";
         LOGGER.info("                                                                                                                                                                                                   \n" +
                 "                                                                                                                                                   bbbbbbbb                                        \n" +
                 "LLLLLLLLLLL             uuuuu     uuuuu          tttt                             iiii       BBBBBBBBBBBBBBBBB   lllllll                      iiii b::::::b                     tttt           !!! \n" +
@@ -84,10 +121,20 @@ public final class Main extends JavaPlugin {
 
         getServer().getConsoleSender().sendMessage(PREFIX + "§eSuccessfully enabled DefendLuetzi!");
         getServer().getConsoleSender().sendMessage(PREFIX + "§cPlease notice this is a dev build! Do not use this on production!");
-        getServer().getConsoleSender().sendMessage(PREFIX + "§eFor more information join my Discord: §9§n§odsc.gg/dwars§r");
+        getServer().getConsoleSender().sendMessage(PREFIX + "§eFor more information join my Discord: §9§n§odsc.gg/dwars§r§e.");
         getServer().getConsoleSender().sendMessage(PREFIX + "§eLützi bleibt!");
 
         getServer().getConsoleSender().sendMessage(PREFIX + "§f--==[§a+§f]==--".repeat(4));
+
+        if(configVersion == updateConfigVersion) {
+            getServer().getConsoleSender().sendMessage(PREFIX + "§aConfig-Version is up to date! Awesome!");
+        } else {
+            for(Player p : Bukkit.getOnlinePlayers()) {
+                if(MainCommand.hasPermission(p, "notify")) p.sendMessage(updateMessage);
+            }
+            getServer().getConsoleSender().sendMessage(Main.PREFIX + updateMessage);
+            upToDate = false;
+        }
 
         CM = new CharacterManager();
 
@@ -105,8 +152,6 @@ public final class Main extends JavaPlugin {
         Objects.requireNonNull(getCommand("dl")).setExecutor(mainCmd);
         Objects.requireNonNull(getCommand("dl")).setTabCompleter(mainCmd);
 
-        saveDefaultConfig();
-
         PluginManager pluginManager = Bukkit.getPluginManager();
         pluginManager.registerEvents(new ClickListener(), this);
         pluginManager.registerEvents(new ChatListener(), this);
@@ -118,6 +163,29 @@ public final class Main extends JavaPlugin {
         ArenaManager.reload();
 
 
+    }
+
+    private boolean validateIfPluginShouldStart() {
+        /*
+        if(ServerVersion.Version.isCurrentLower(ServerVersion.Version.v1_8_R1)) {
+            MessageUtils.thisVersionIsNotSupported();
+            Debugger.sendConsoleMsg("&cYour server version is not supported by DefendLützerath!");
+            Debugger.sendConsoleMsg("&cSadly, we must shut off. Maybe you consider changing your server version?");
+            forceDisable = true;
+            getServer().getPluginManager().disablePlugin(this);
+            return false;
+        }
+
+         */
+        try {
+            Class.forName("org.spigotmc.SpigotConfig");
+        } catch(Exception e) {
+            LOGGER.log(Level.WARNING, "&cYour server software is not supported by DefendLützerath!");
+            LOGGER.log(Level.WARNING, "&cWe support Paper and Paper forks only! Shutting off...");
+            getServer().getPluginManager().disablePlugin(this);
+            return false;
+        }
+        return true;
     }
 
     @Override

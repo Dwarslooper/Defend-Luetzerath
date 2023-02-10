@@ -3,6 +3,7 @@ package com.dwarslooper.luetzidefense.characters.activist;
 import com.destroystokyo.paper.block.TargetBlockInfo;
 import com.destroystokyo.paper.entity.TargetEntityInfo;
 import com.dwarslooper.luetzidefense.Main;
+import com.dwarslooper.luetzidefense.SettingManager;
 import com.dwarslooper.luetzidefense.StackCreator;
 import com.dwarslooper.luetzidefense.Utils;
 import com.dwarslooper.luetzidefense.characters.Activist;
@@ -101,9 +102,9 @@ public class Aggressive extends Activist {
                                 vil.damage(2, bomb);
                                 if (entity.isDead()) {
                                     if (l.getProtestersSpawned().contains(entity))
-                                        l.removeBalance(4);
+                                        l.removeBalance(SettingManager.pointsOnDeath);
                                     else if (l.getEnemiesSpawned().contains(entity))
-                                        l.addBalance(2);
+                                        l.addBalance(SettingManager.pointsOnKill + 2);
                                 }
                                 itemThrower.remove(bomb);
                                 bomb.remove();

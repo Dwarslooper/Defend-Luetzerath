@@ -1,8 +1,6 @@
 package com.dwarslooper.luetzidefense.commands;
 
-import com.dwarslooper.luetzidefense.Main;
-import com.dwarslooper.luetzidefense.SchematicManager;
-import com.dwarslooper.luetzidefense.Translate;
+import com.dwarslooper.luetzidefense.*;
 import com.dwarslooper.luetzidefense.arena.Arena;
 import com.dwarslooper.luetzidefense.arena.ArenaManager;
 import com.dwarslooper.luetzidefense.arena.GameAsset;
@@ -51,6 +49,7 @@ import java.util.List;
 import java.util.Objects;
 
 import static com.dwarslooper.luetzidefense.Translate.translate;
+import static com.dwarslooper.luetzidefense.game.LobbyHandler.GAMES;
 
 public class MainCommand implements CommandExecutor, TabCompleter {
     @Override
@@ -82,10 +81,16 @@ public class MainCommand implements CommandExecutor, TabCompleter {
                 sender.sendMessage(Main.PREFIX + "§cDefend§6Lützerath\n§bby §a§lDwarslooper\n§bRunning §cUNSTABLE §aDEV-0.1\n§8----------------\n§bFor more information visit §9§n§odwarslooper.com/defluetzi§b!\n§cNotice this is a Dev-Build! Do not use this on production!");
             } else if(args[0].equalsIgnoreCase("reload")) {
                 if(!hasPermission(p, "reload")) return false;
-                Main.config.reload();
+                //Leave this in ^^
+                //Utils.checkConfig();
+                for(Arena a : ArenaManager.ARENAS.values()) {
+                    if(LobbyHandler.gameUsesArena(GAMES, a) != null) LobbyHandler.resetGame(a);
+                }
                 Main.getInstance().reloadConfig();
+                Main.config.reload();
                 Translate.reload();
                 ArenaManager.reload();
+                SettingManager.loadSettings();
                 sender.sendMessage(Main.PREFIX + translate("::command.reload.success"));
             } else if(args[0].equalsIgnoreCase("translate")) {
                 if(!hasPermission(p, "translate")) return false;
@@ -254,8 +259,8 @@ public class MainCommand implements CommandExecutor, TabCompleter {
                         sender.sendMessage(Main.PREFIX + translate("::game.kick.no_such_player"));
                         return false;
                     } else {
-                        p.sendMessage(translate("::game.kick.success", p0.getName()));
-                        p0.sendMessage(translate("::game.kick.message", gl.getArena().getId()));
+                        p.sendMessage(Main.PREFIX + translate("::game.kick.success", p0.getName()));
+                        p0.sendMessage(Main.PREFIX + translate("::game.kick.message", gl.getArena().getName()));
                         gl.handleLeft(p0);
                     }
                 }

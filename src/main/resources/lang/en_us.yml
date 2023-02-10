@@ -87,6 +87,9 @@ game.status.running: §a§lRUNNING
 game.status.resetting: §c§lRESETTING
 game.status.unknown: §d§lUNKNOWN
 
+ingame.blocked_command: "§cThis command can't be used ingame"
+
+ingame.protester_death: "§eA protester has died!"
 
 ingame.asset.buy: §e§o(Click to buy §8§o| §6§o%s%◎§e§o)
 ingame.asset.too_expensive: §cYou dont have enough ◎ for §6%s%§c!
@@ -140,6 +143,8 @@ confirm.delete_spawns.success: §aAll spawns deleted in §6%s%§a!
 text.cost: '§aCost§8: §6%s%◎'
 text.skills: '§aSkills§8: §e§o(Right-Click)'
 text.no_permission: '§cYou are lacking the permission node: §6%s%§c!'
+
+command.short.only_ingame: §cYou have to play to execute this command!
 
 command.lang.error: §cYou have to specify a language!
 command.lang.success: §aThe language has been set to §6%s%§a!

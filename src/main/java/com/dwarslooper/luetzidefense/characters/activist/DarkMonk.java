@@ -1,6 +1,7 @@
 package com.dwarslooper.luetzidefense.characters.activist;
 
 import com.dwarslooper.luetzidefense.Main;
+import com.dwarslooper.luetzidefense.SettingManager;
 import com.dwarslooper.luetzidefense.characters.Activist;
 import com.dwarslooper.luetzidefense.game.GameLobby;
 import org.bukkit.Bukkit;
@@ -39,7 +40,7 @@ public class DarkMonk extends Activist {
                     villager.setVelocity(e.getLocation().getDirection().add(new Vector(0, 0.4, 0)).multiply(0.8));
                     villager.getPathfinder().stopPathfinding();
                     if(villager.isDead()) {
-                        l.addBalance(2);
+                        l.addBalance(SettingManager.pointsOnKill + 4);
                     }
                 }
             }

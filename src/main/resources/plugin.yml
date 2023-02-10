@@ -67,6 +67,9 @@ permissions:
   defluetzi.lang:
     default: op
     description: Allows a user to change the language of the plugin
+  defluetzi.notify:
+    default: op
+    description: Notifies a player whith this permission when updates are available
   defluetzi.admin:
     default: op
     description: Other admin commands use

@@ -107,36 +107,36 @@ public class ClickListener implements Listener {
             Player p = ((Player) e.getWhoClicked());
 
             if(e.getCurrentItem().getItemMeta().getDisplayName().contains(translate("::ingame.gui.skills.pe.title"))) {
-                if(lobby.getSkillsPhysical().get(p) == 10) e.getWhoClicked().sendMessage(translate("", e.getCurrentItem().getItemMeta().getDisplayName()));
+                if(lobby.getSkillsPhysical().get(p) == 10) e.getWhoClicked().sendMessage(Main.PREFIX + translate("", e.getCurrentItem().getItemMeta().getDisplayName()));
                 else if(lobby.getBalance() - 22 >= 0) {
                     lobby.removeBalance(22);
                     lobby.getSkillsPhysical().put(p, lobby.getSkillsPhysical().get(p) + 1);
                 } else {
-                    e.getWhoClicked().sendMessage(translate("::ingame.asset.too_expensive", e.getCurrentItem().getItemMeta().getDisplayName().replace("§c","")));
+                    e.getWhoClicked().sendMessage(Main.PREFIX + translate("::ingame.asset.too_expensive", e.getCurrentItem().getItemMeta().getDisplayName().replace("§c","")));
                 }
             } else if(e.getCurrentItem().getItemMeta().getDisplayName().contains(translate("::ingame.gui.skills.points.title"))) {
-                if(lobby.getSkillsPoints().get(p) == 10) e.getWhoClicked().sendMessage(translate("", e.getCurrentItem().getItemMeta().getDisplayName()));
+                if(lobby.getSkillsPoints().get(p) == 10) e.getWhoClicked().sendMessage(Main.PREFIX + translate("", e.getCurrentItem().getItemMeta().getDisplayName()));
                 else if(lobby.getBalance() - 35 >= 0) {
                     lobby.removeBalance(35);
                     lobby.getSkillsPoints().put(p, lobby.getSkillsPoints().get(p) + 1);
                 } else {
-                    e.getWhoClicked().sendMessage(translate("::ingame.asset.too_expensive", e.getCurrentItem().getItemMeta().getDisplayName().replace("§c","")));
+                    e.getWhoClicked().sendMessage(Main.PREFIX + translate("::ingame.asset.too_expensive", e.getCurrentItem().getItemMeta().getDisplayName().replace("§c","")));
                 }
             } else if(e.getCurrentItem().getItemMeta().getDisplayName().contains(translate("::ingame.gui.skills.speed.title"))) {
-                if(lobby.getSkillsSpeed().get(p) == 10) e.getWhoClicked().sendMessage(translate("", e.getCurrentItem().getItemMeta().getDisplayName()));
+                if(lobby.getSkillsSpeed().get(p) == 10) e.getWhoClicked().sendMessage(Main.PREFIX + translate("", e.getCurrentItem().getItemMeta().getDisplayName()));
                 else if(lobby.getBalance() - 13 >= 0) {
                     lobby.removeBalance(13);
                     lobby.getSkillsSpeed().put(p, lobby.getSkillsSpeed().get(p) + 1);
                 } else {
-                    e.getWhoClicked().sendMessage(translate("::ingame.asset.too_expensive", e.getCurrentItem().getItemMeta().getDisplayName().replace("§c","")));
+                    e.getWhoClicked().sendMessage(Main.PREFIX + translate("::ingame.asset.too_expensive", e.getCurrentItem().getItemMeta().getDisplayName().replace("§c","")));
                 }
             } else if(e.getCurrentItem().getItemMeta().getDisplayName().contains(translate("::ingame.gui.skills.throw.title"))) {
-                if(lobby.getSkillsThrow().get(p) == 10) e.getWhoClicked().sendMessage(translate("", e.getCurrentItem().getItemMeta().getDisplayName()));
+                if(lobby.getSkillsThrow().get(p) == 10) e.getWhoClicked().sendMessage(Main.PREFIX + translate("", e.getCurrentItem().getItemMeta().getDisplayName()));
                 else if(lobby.getBalance() - 17 >= 0) {
                     lobby.removeBalance(17);
                     lobby.getSkillsThrow().put(p, lobby.getSkillsThrow().get(p) + 1);
                 } else {
-                    e.getWhoClicked().sendMessage(translate("::ingame.asset.too_expensive", e.getCurrentItem().getItemMeta().getDisplayName().replace("§c","")));
+                    e.getWhoClicked().sendMessage(Main.PREFIX + translate("::ingame.asset.too_expensive", e.getCurrentItem().getItemMeta().getDisplayName().replace("§c","")));
                 }
             }
 
@@ -157,31 +157,31 @@ public class ClickListener implements Listener {
             if(e.getCurrentItem().getItemMeta().getDisplayName().contains(translate("::ingame.gui.shop.tnt.title"))) {
                 if(lobby.getBalance() - 44 >= 0) lobby.setBalance(lobby.getBalance() - 44);
                 else {
-                    e.getWhoClicked().sendMessage(translate("::ingame.asset.too_expensive", e.getCurrentItem().getItemMeta().getDisplayName().replace("§c","")));
+                    e.getWhoClicked().sendMessage(Main.PREFIX + translate("::ingame.asset.too_expensive", e.getCurrentItem().getItemMeta().getDisplayName().replace("§c","")));
                     return;
                 }
             } else if(e.getCurrentItem().getItemMeta().getDisplayName().contains(translate("::ingame.gui.shop.molotow.title"))) {
                 if(lobby.getBalance() - 26 >= 0) lobby.setBalance(lobby.getBalance() - 26);
                 else {
-                    e.getWhoClicked().sendMessage(translate("::ingame.asset.too_expensive", e.getCurrentItem().getItemMeta().getDisplayName().replace("§c","")));
+                    e.getWhoClicked().sendMessage(Main.PREFIX + translate("::ingame.asset.too_expensive", e.getCurrentItem().getItemMeta().getDisplayName().replace("§c","")));
                     return;
                 }
             } else if(e.getCurrentItem().getItemMeta().getDisplayName().contains(translate("::ingame.gui.shop.water.title"))) {
                 if(lobby.getBalance() - 35 >= 0) lobby.setBalance(lobby.getBalance() - 35);
                 else {
-                    e.getWhoClicked().sendMessage(translate("::ingame.asset.too_expensive", e.getCurrentItem().getItemMeta().getDisplayName().replace("§c","")));
+                    e.getWhoClicked().sendMessage(Main.PREFIX + translate("::ingame.asset.too_expensive", e.getCurrentItem().getItemMeta().getDisplayName().replace("§c","")));
                     return;
                 }
             } else if(e.getCurrentItem().getItemMeta().getDisplayName().contains(translate("::ingame.gui.shop.buff.title"))) {
                 if(lobby.getBalance() - 13 >= 0) lobby.setBalance(lobby.getBalance() - 13);
                 else {
-                    e.getWhoClicked().sendMessage(translate("::ingame.asset.too_expensive", e.getCurrentItem().getItemMeta().getDisplayName().replace("§c","")));
+                    e.getWhoClicked().sendMessage(Main.PREFIX + translate("::ingame.asset.too_expensive", e.getCurrentItem().getItemMeta().getDisplayName().replace("§c","")));
                     return;
                 }
             } else if(e.getCurrentItem().getItemMeta().getDisplayName().contains(translate("::ingame.gui.shop.sword.title"))) {
                 if(lobby.getBalance() - 53 >= 0) lobby.setBalance(lobby.getBalance() - 53);
                 else {
-                    e.getWhoClicked().sendMessage(translate("::ingame.asset.too_expensive", e.getCurrentItem().getItemMeta().getDisplayName().replace("§c","")));
+                    e.getWhoClicked().sendMessage(Main.PREFIX + translate("::ingame.asset.too_expensive", e.getCurrentItem().getItemMeta().getDisplayName().replace("§c","")));
                     return;
                 }
             }

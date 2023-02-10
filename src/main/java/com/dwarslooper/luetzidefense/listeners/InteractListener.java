@@ -1,9 +1,6 @@
 package com.dwarslooper.luetzidefense.listeners;
 
-import com.dwarslooper.luetzidefense.Main;
-import com.dwarslooper.luetzidefense.SchematicManager;
-import com.dwarslooper.luetzidefense.StackCreator;
-import com.dwarslooper.luetzidefense.Translate;
+import com.dwarslooper.luetzidefense.*;
 import com.dwarslooper.luetzidefense.arena.Arena;
 import com.dwarslooper.luetzidefense.arena.ArenaManager;
 import com.dwarslooper.luetzidefense.arena.GameAssetManager;
@@ -87,7 +84,7 @@ public class InteractListener implements Listener {
             else if(isIngame.get(e.getPlayer()).getArena().getStatus() == 2) {
 
                 if(e.getAction() == Action.RIGHT_CLICK_BLOCK) {
-                    if(e.getClickedBlock().getType() == Material.MUD && e.getPlayer().getInventory().getItemInMainHand().getType().isEmpty()) {
+                    if(e.getClickedBlock().getType() == Material.MUD && e.getPlayer().getInventory().getItemInMainHand().getType().isEmpty() && SettingManager.pickupMud) {
                         e.getPlayer().getInventory().addItem(StackCreator.createItem(Material.MUD, 1, translate("::ingame.gui.shop.mud.title")));
                     }
                 }
@@ -111,7 +108,7 @@ public class InteractListener implements Listener {
                             bomb.getWorld().createExplosion(bomb.getLocation(), 2, false, false);
                             bomb.getNearbyEntities(4, 4, 4).forEach(entity -> {
                                 if (entity.isDead()) {
-                                    lobby.addBalance(2);
+                                    lobby.addBalance(SettingManager.pointsOnKill);
                                 }
                             });
                             bomb.remove();
@@ -135,7 +132,7 @@ public class InteractListener implements Listener {
                             bomb.getNearbyEntities(6, 6, 6).forEach(entity -> {
                                 entity.setFireTicks(200);
                                 if (entity.isDead()) {
-                                    lobby.addBalance(2);
+                                    lobby.addBalance(SettingManager.pointsOnKill);
                                 }
                             });
                             bomb.remove();
@@ -186,9 +183,9 @@ public class InteractListener implements Listener {
                                             entity.damage(2, bomb);
                                             if (entity.isDead()) {
                                                 if (lobby.getProtestersSpawned().contains(entity))
-                                                    lobby.removeBalance(4);
+                                                    lobby.removeBalance(SettingManager.pointsOnDeath);
                                                 else if (lobby.getEnemiesSpawned().contains(entity))
-                                                    lobby.addBalance(2);
+                                                    lobby.addBalance(SettingManager.pointsOnKill);
                                             }
                                             bomb.remove();
                                             this.cancel();
@@ -209,11 +206,19 @@ public class InteractListener implements Listener {
             if(e.getClickedBlock().getState() instanceof Sign sign) {
                 for(Arena a : ArenaManager.ARENAS.values()) {
                     if(a.getSigns().contains(sign.getLocation())) {
-                        if(LobbyHandler.gameUsesArena(LobbyHandler.GAMES, a) == null) {
-                            LobbyHandler.createGame(a, e.getPlayer());
-                            e.getPlayer().chat("/dl game " + a.getId() + " join");
+                        if(a.getStatus() == 0 || a.getStatus() == 1) {
+                            if(LobbyHandler.gameUsesArena(LobbyHandler.GAMES, a) == null) {
+                                if(!LobbyHandler.interactCooldown.containsKey(e.getPlayer())) {
+                                    LobbyHandler.createGame(a, e.getPlayer());
+                                    e.getPlayer().chat("/dl game " + a.getId() + " join");
+                                } else {
+                                    LobbyHandler.checkCooldown(e.getPlayer());
+                                }
+                            } else {
+                                e.getPlayer().chat("/dl game " + a.getId() + " join");
+                            }
                         } else {
-                            e.getPlayer().chat("/dl game " + a.getId() + " join");
+                            e.getPlayer().sendMessage(Main.PREFIX + translate("::game.message.already_started"));
                         }
                     }
                 }

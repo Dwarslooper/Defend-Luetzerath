@@ -1,6 +1,7 @@
 package com.dwarslooper.luetzidefense.game;
 
 import com.dwarslooper.luetzidefense.Main;
+import com.dwarslooper.luetzidefense.SettingManager;
 import com.dwarslooper.luetzidefense.StackCreator;
 import com.dwarslooper.luetzidefense.Utils;
 import com.dwarslooper.luetzidefense.arena.Arena;
@@ -21,6 +22,7 @@ import java.util.Random;
 
 import static com.dwarslooper.luetzidefense.Translate.translate;
 
+@SuppressWarnings("unchecked")
 public class GameLobby {
 
     boolean isIngame = false;
@@ -38,7 +40,9 @@ public class GameLobby {
     HashMap<Player, Location> prevPos = new HashMap<>();
     Arena arena;
     int spawnDelay;
+    int pointsFromAssetDelay;
     int nextSpawn;
+    int nextPointFromAsset;
     int timePlayed;
     HashMap<Entity, GameAsset> removeAssets = new HashMap<>();
     boolean isLost;
@@ -58,11 +62,12 @@ public class GameLobby {
         Main.getLOGGER().info(getArena().getAssets().toString());
         initFellowProtesters();
         isIngame = true;
-        spawnDelay = 80;
+        spawnDelay = SettingManager.spawnDelay;
+        pointsFromAssetDelay = SettingManager.assetGeneratePointsDelay;
         for(GameAsset asset : getArena().getAssets()) {
             if(!asset.verifyFiles()) {
                 Main.getInstance().getServer().getConsoleSender().sendMessage(Main.PREFIX + "§cGameAsset §6" + asset.getId() + " §ccould not be registered in arena §6" + getArena().getId() + " §cbecause the Files could not be found! Make sure you have the Asset file §f" + asset.getFileName() + " §cand the broken version §f" + Utils.replaceLast(asset.getFileName(), ".schem", "_broken.schem") + " §cin the §6assets §cfolder for this arena!");
-                return;
+                continue;
             }
             ArmorStand display = (ArmorStand) arena.getCenter().getWorld().spawnEntity(asset.getDisplayAt(), EntityType.ARMOR_STAND);
             display.setSmall(true);
@@ -95,10 +100,25 @@ public class GameLobby {
 
         timePlayed += 1;
 
+        int protesterCountCompare = protestersSpawned.size();
+
         enemiesSpawned.removeIf(Entity::isDead);
         protestersSpawned.removeIf(Entity::isDead);
+
+        if(protesterCountCompare > protestersSpawned.size() && SettingManager.notifyDeath) {
+            getPlayers().forEach(player -> player.sendMessage(Main.PREFIX + translate("::ingame.protester_death")));
+        }
+
         updateRemoveAssets();
-        if(nextSpawn < spawnDelay) {
+
+        if(nextPointFromAsset <= pointsFromAssetDelay) {
+            nextPointFromAsset++;
+        } else {
+            addBalance(SettingManager.pointsFromAssets);
+            nextPointFromAsset = 0;
+        }
+
+        if(nextSpawn <= spawnDelay) {
             nextSpawn++;
         } else {
             updateEntities();
@@ -172,6 +192,7 @@ public class GameLobby {
                 });
                 int randomNum = Math.max(rand.nextInt(characters.size()), 0);
                 Character c = characters.get(randomNum);
+                if(e.getLocation().distance(getArena().getCenter()) > 40) e.getPathfinder().moveTo(getArena().getCenter());
                 Main.CM.getBounds().put(e, c);
                 if(c.manageEntity(e) == null) {
                     Main.getInstance().getServer().getConsoleSender().sendMessage(Main.PREFIX + "§cWarning! Changes have been made to characters, but character §6" + c.getDisplay().replaceFirst("::", "") + " §creturned null when initializing! Maybe the §fmanageEntity() §cmethod is not configured properly?!");
@@ -192,10 +213,9 @@ public class GameLobby {
                     Random rand = new Random();
 
                     int randomNum = Math.max(rand.nextInt(assets.size()) - 1, 0);
-                    //Main.LOGGER.info("");
 
                     removeAssets.put(entity, assets.get(randomNum));
-                    // TODO: 23.01.2023 Implement code below to debug
+                    // Leave this code here, its for debugging purposes!
                     //Main.LOGGER.info("Villager " + entity.getUniqueId() + " is now going to " + assets.get(randomNum).getId());
                 }
             }
@@ -228,7 +248,10 @@ public class GameLobby {
             LobbyHandler.GAMES.forEach(gameLobby -> {
                 if(gameLobby.getPlayers().contains(p)) gameLobby.handleLeft(p);
             });
-            inventory.put(p, p.getInventory().getContents());
+
+            if(SettingManager.inventoryManager) inventory.put(p, p.getInventory().getContents());
+
+            p.setGameMode(GameMode.ADVENTURE);
             prevPos.put(p, p.getLocation());
             LobbyHandler.isIngame.put(p, this);
             p.getInventory().clear();
@@ -239,7 +262,7 @@ public class GameLobby {
             getArena().setStatus(1);
             getArena().updateSigns();
             p.teleport(getArena().getCenter());
-            p.sendMessage(translate("::ingame.welcome.chat", p.getName()));
+            p.sendMessage(Main.PREFIX + translate("::ingame.welcome.chat", p.getName()));
             p.sendTitle(translate("::ingame.welcome.title"), translate("::ingame.welcome.subtitle", p.getName()));
         } else {
             p.sendMessage(Main.PREFIX + translate("::game.message.already_in_game"));
@@ -249,17 +272,22 @@ public class GameLobby {
     public void handleLeft(Player p) {
         if(getPlayers().contains(p)) {
             p.sendMessage(Main.PREFIX + translate("::game.message.left", getArena().getName()));
-            p.getInventory().setContents(inventory.get(p));
-            p.updateInventory();
+
+            if(SettingManager.inventoryManager) {
+                p.getInventory().setContents(inventory.get(p));
+                p.updateInventory();
+                inventory.remove(p);
+            }
+
             p.teleport(prevPos.get(p));
             prevPos.remove(p);
-            inventory.remove(p);
             getPlayers().remove(p);
             LobbyHandler.isIngame.remove(p);
             if(getPlayers().isEmpty()) {
                 if(getArena().getStatus() == 3) return;
-                if(getArena().getStatus() == 2 ) {
+                if(getArena().getStatus() == 2) {
                     LobbyHandler.resetGame(getArena());
+                    return;
                 }
                 getArena().setStatus(0);
                 getArena().updateSigns();

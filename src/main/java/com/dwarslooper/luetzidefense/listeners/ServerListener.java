@@ -1,6 +1,9 @@
 package com.dwarslooper.luetzidefense.listeners;
 
 import com.destroystokyo.paper.event.server.ServerTickStartEvent;
+import com.dwarslooper.luetzidefense.Main;
+import com.dwarslooper.luetzidefense.SettingManager;
+import com.dwarslooper.luetzidefense.commands.MainCommand;
 import com.dwarslooper.luetzidefense.game.GameLobby;
 import com.dwarslooper.luetzidefense.game.LobbyHandler;
 import com.dwarslooper.luetzidefense.gui.ShopGUI;
@@ -18,6 +21,7 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.entity.EntityExplodeEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 import java.util.ArrayList;
@@ -46,6 +50,15 @@ public class ServerListener implements Listener {
     }
 
     @EventHandler
+    public void onJoin(PlayerJoinEvent e) {
+        if(MainCommand.hasPermission(e.getPlayer(), "notify")) {
+            if(!Main.upToDate) {
+                e.getPlayer().sendMessage(Main.updateMessage);
+            }
+        }
+    }
+
+    @EventHandler
     public void onLeave(PlayerQuitEvent e) {
         if(isIngame.containsKey(e.getPlayer())) {
             isIngame.get(e.getPlayer()).handleLeft(e.getPlayer());
@@ -67,9 +80,9 @@ public class ServerListener implements Listener {
                 e.setDamage(e.getDamage() + LobbyHandler.isIngame.get(player).getSkillsPhysical().get(player));
                 if(e.getEntity() instanceof ArmorStand) e.setCancelled(true);
                 else if(LobbyHandler.isIngame.get(player).getEnemiesSpawned().contains(e.getEntity()) && e.getFinalDamage() >= ((LivingEntity) e.getEntity()).getHealth()) {
-                    LobbyHandler.isIngame.get(player).addBalance(2 * (pointsMultiplier + 1));
+                    LobbyHandler.isIngame.get(player).addBalance(SettingManager.pointsOnKill * (pointsMultiplier + 1));
                 } else if(LobbyHandler.isIngame.get(player).getProtestersSpawned().contains(e.getEntity()) && e.getFinalDamage() >= ((LivingEntity) e.getEntity()).getHealth()) {
-                    LobbyHandler.isIngame.get(player).removeBalance(4);
+                    LobbyHandler.isIngame.get(player).removeBalance(SettingManager.pointsOnDeath);
                 }
             }
         }

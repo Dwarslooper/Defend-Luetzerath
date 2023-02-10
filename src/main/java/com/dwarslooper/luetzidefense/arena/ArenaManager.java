@@ -57,7 +57,10 @@ public class ArenaManager {
                 return;
             }
 
-            ARENAS.put(id_, new Arena(id, name, center, gameAssets, enemySpawns));
+            Arena a = new Arena(id, name, center, gameAssets, enemySpawns);
+            ARENAS.put(id_, a);
+            a.setStatus(0);
+            a.updateSigns();
         }
 
         for(Arena a : ARENAS.values()) {

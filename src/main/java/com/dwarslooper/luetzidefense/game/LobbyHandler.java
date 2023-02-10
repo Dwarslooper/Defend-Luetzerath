@@ -31,7 +31,7 @@ public class LobbyHandler {
     }
 
     public static void resetGame(Arena arena) {
-        arena.setStatus(0);
+        arena.setStatus(3);
         arena.updateSigns();
         SchematicManager.paste(arena.getCenter(), arena.getFile(), false);
         GameLobby gl = gameUsesArena(GAMES, arena);

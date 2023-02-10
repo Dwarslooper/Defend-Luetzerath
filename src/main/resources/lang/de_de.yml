@@ -85,7 +85,11 @@ game.status.inactive: §7§lINAKTIV
 game.status.waiting: §e§lSTARTET
 game.status.running: §a§lLÄUFT
 game.status.resetting: §c§lZURÜCKSETZEN
-game.status.unknown: §d§lUNKNOWN
+game.status.unknown: §d§lUNBEKANNT
+
+ingame.blocked_command: "§cDieser Befehl kann während eines Spiels nicht genutzt werden!"
+
+ingame.protester_death: "§eEin Demonstrant ist gestorben!"
 
 
 ingame.asset.buy: §e§o(Klicken zum kaufen §8§o| §6§o%s%◎§e§o)
@@ -140,6 +144,8 @@ confirm.delete_spawns.success: §aAlle Spawns in §6%s% §agelöscht!
 text.cost: '§aPreis§8: §6%s%◎'
 text.skills: '§aSkills§8: §e§o(Rechtsklick)'
 text.no_permission: '§cDir fehlt die Berechtigung §6%s%§c!'
+
+command.short.only_ingame: §cDu musst in einem Spiel sein um diesen Befehl zu benutzen!
 
 command.lang.error: §cDu musst eine Sprache angeben!
 command.lang.success: §aDie Sprache wurde auf §6%s% §agesetzt!

@@ -2,7 +2,7 @@ package com.dwarslooper.luetzidefense.characters;
 
 import org.bukkit.entity.Entity;
 
-public abstract class Activist extends Character{
+public abstract class Activist extends Character {
 
     int cost;
 

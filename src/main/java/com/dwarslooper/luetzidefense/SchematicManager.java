@@ -1,5 +1,7 @@
 package com.dwarslooper.luetzidefense;
 
+import com.dwarslooper.luetzidefense.arena.Arena;
+import com.dwarslooper.luetzidefense.arena.ArenaManager;
 import com.fastasyncworldedit.core.FaweAPI;
 import com.sk89q.worldedit.EditSession;
 import com.sk89q.worldedit.WorldEdit;
@@ -12,6 +14,7 @@ import com.sk89q.worldedit.function.operation.Operations;
 import com.sk89q.worldedit.math.BlockVector3;
 import com.sk89q.worldedit.session.ClipboardHolder;
 import com.sk89q.worldedit.world.World;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 
 import java.io.File;
@@ -21,29 +24,44 @@ import java.io.IOException;
 public class SchematicManager {
 
     public static void paste(Location loc, File file, boolean ignoreAir) {
-        BlockVector3 to = BlockVector3.at(loc.getX(), loc.getY(), loc.getZ());
-        World world = FaweAPI.getWorld(loc.getWorld().getName());
-        ClipboardFormat format = ClipboardFormats.findByFile(file);
-        ClipboardReader reader = null;
-        try {
-            reader = format.getReader(new FileInputStream(file));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Clipboard clipboard = null;
-        try {
-            clipboard = reader.read();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        try (EditSession editSession = WorldEdit.getInstance().getEditSessionFactory().getEditSession(world, -1)) {
-            Operation operation = new ClipboardHolder(clipboard)
-                    .createPaste(editSession)
-                    .to(to)
-                    .ignoreAirBlocks(ignoreAir)
-                    .build();
-            Operations.complete(operation);
-        }
+        Thread t = new Thread(() -> {
+            BlockVector3 to = BlockVector3.at(loc.getX(), loc.getY(), loc.getZ());
+            World world = FaweAPI.getWorld(loc.getWorld().getName());
+            ClipboardFormat format = ClipboardFormats.findByFile(file);
+            ClipboardReader reader = null;
+            try {
+                reader = format.getReader(new FileInputStream(file));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Clipboard clipboard = null;
+            try {
+                clipboard = reader.read();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            try (EditSession editSession = WorldEdit.getInstance().getEditSessionFactory().getEditSession(world, -1)) {
+                Operation operation = new ClipboardHolder(clipboard)
+                        .createPaste(editSession)
+                        .to(to)
+                        .ignoreAirBlocks(ignoreAir)
+                        .build();
+                Operations.complete(operation);
+            }
+
+
+            Bukkit.getScheduler().runTask(Main.getInstance(), () -> {
+                if(file.getName().equalsIgnoreCase("arena.schem")) {
+                    Arena a = ArenaManager.getByName(file.getParentFile().getName());
+                    if(a != null) {
+                        Main.LOGGER.info("Set status to 0, finished with map reset!");
+                        a.setStatus(0);
+                        a.updateSigns();
+                    }
+                }
+            });
+        });
+        t.start();
     }
 
 }

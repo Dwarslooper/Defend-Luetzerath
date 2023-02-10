@@ -36,7 +36,7 @@ public class SkillsGUI extends ClickGUI{
         }
 
         if(lobby == null) {
-            player.sendMessage(translate("::gui.fail.not_ingame"));
+            player.sendMessage(Main.PREFIX + translate("::gui.fail.not_ingame"));
         } else {
             inv.setItem(10, StackCreator.createItem(Material.IRON_SWORD, 1, translate("::ingame.gui.skills.pe.title"), List.of(translate("::text.cost", "22"), translate("::ingame.gui.skills.pe.desc"), Utils.getProgressBar(lobby.getSkillsPhysical().get(player), 10, 10, "※", ChatColor.YELLOW, ChatColor.GRAY))));
             inv.setItem(11, StackCreator.createItem(Material.EXPERIENCE_BOTTLE, 1, translate("::ingame.gui.skills.points.title"), List.of(translate("::text.cost", "35"), translate("::ingame.gui.skills.points.desc"), Utils.getProgressBar(lobby.getSkillsPoints().get(player), 10, 10, "※", ChatColor.YELLOW, ChatColor.GRAY))));

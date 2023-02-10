@@ -1,10 +1,14 @@
 package com.dwarslooper.luetzidefense;
 
 import com.google.common.base.Strings;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Entity;
 import org.bukkit.util.Vector;
+
+import java.util.Objects;
 
 public class Utils {
     public static String getProgressBar(int current, int max, int totalBars, String symbol, ChatColor completedColor, ChatColor notCompletedColor) {
@@ -24,8 +28,8 @@ public class Utils {
         double yaw = Math.atan2(direction.getX(), direction.getZ());
         double pitch = Math.asin(direction.getY());
         Location newLoc = entity1.getLocation().setDirection(direction);
-        newLoc.setYaw((float) Math.toDegrees(yaw));
-        newLoc.setPitch((float) Math.toDegrees(pitch));
+        newLoc.setYaw((float) Math.toDegrees(yaw) * -1);
+        newLoc.setPitch((float) Math.toDegrees(pitch) * -1);
         entity1.teleport(newLoc);
     }
 

@@ -67,6 +67,9 @@ public class Translate {
 
     public static void init() {
 
+        // Add default translations here. If you plan on committing your own language to the plugin, you
+        // dont have to change anything in here.
+
         Main.getInstance().saveResource("lang/en_us.yml", false);
         Main.getInstance().saveResource("lang/de_de.yml", false);
         Main.getInstance().saveResource("lang/la_ng.yml", false);
