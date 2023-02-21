@@ -29,8 +29,8 @@ mapsetting.schem.desc: §aMap-Schematic File
 mapsetting.schem.expl: '§eThe schematic file has to be located in the folder of the arena and has to be named "arena.schem".'
 mapsetting.spawn.title: §eAdd spawn
 mapsetting.spawn.desc: §aManage spawnpoint for enemys
-mapsetting.spawn.right: '§e§o(Add: Right-Click)'
-mapsetting.spawn.left: '§e§o(Delete all: Left-Click)'
+mapsetting.spawn.right: '§e§o(Delete all: Right-Click)'
+mapsetting.spawn.left: '§e§o(Add: Left-Click)'
 mapsetting.delete.title: §4Delete
 mapsetting.delete.desc: §aPermanently delete this arena
 mapsetting.assets.title: §eAssets

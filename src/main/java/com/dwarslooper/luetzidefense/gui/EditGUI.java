@@ -61,7 +61,7 @@ public class EditGUI extends ClickGUI{
 
         inv.setItem(10, StackCreator.createItem(Material.ORANGE_BANNER, 1, translate("::mapsetting.center.title"), List.of(translate("::mapsetting.center.desc"), isCenterSet + changeText)));
         inv.setItem(11, StackCreator.createItem(Material.MAP, 1, translate("::mapsetting.schem.title"), List.of(translate("::mapsetting.schem.desc"), isSchemSet + changeText)));
-        inv.setItem(12, StackCreator.createItem(Material.ENDER_EYE, 1, translate("::mapsetting.spawn.title"), List.of(translate("::mapsetting.spawn.desc"), translate("::mapsetting.spawn.right"), translate("::mapsetting.spawn.left"), isSpawnsSet + changeText)));
+        inv.setItem(12, StackCreator.createItem(Material.ENDER_EYE, 1, translate("::mapsetting.spawn.title"), List.of(translate("::mapsetting.spawn.desc"), translate("::mapsetting.spawn.left"), translate("::mapsetting.spawn.right"), isSpawnsSet + changeText)));
         inv.setItem(13, StackCreator.createItem(Material.OAK_LOG, 1, translate("::mapsetting.assets.title"), List.of(translate("::mapsetting.assets.desc"), isAssetsSet + changeText)));
         inv.setItem(14, StackCreator.createItem(Material.OAK_SIGN, 1, translate("::mapsetting.signs.title"), List.of(translate("::mapsetting.signs.desc"), translate("::mapsetting.signs.right"), translate("::mapsetting.signs.left"), isSignsSet + changeText)));
         inv.setItem(15, StackCreator.createItem(Material.FIREWORK_ROCKET, 1, translate("::mapsetting.finish.title"), List.of(translate("::mapsetting.finish.desc0"), translate("::mapsetting.finish.desc1"), isFinished + changeText)));

@@ -50,6 +50,7 @@ public class Arena {
 
     private void updateSignList() {
         if(getConfig().getList("signs") == null) return;
+        signs.clear();
         getConfig().getList("signs").forEach(sign -> signs.add((Location) sign));
     }
 

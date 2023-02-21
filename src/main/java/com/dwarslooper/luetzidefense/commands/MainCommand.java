@@ -13,18 +13,13 @@ import com.dwarslooper.luetzidefense.setup.Setup;
 import com.fastasyncworldedit.core.FaweAPI;
 import com.sk89q.worldedit.EditSession;
 import com.sk89q.worldedit.WorldEdit;
-import com.sk89q.worldedit.WorldEditException;
-import com.sk89q.worldedit.extent.clipboard.BlockArrayClipboard;
 import com.sk89q.worldedit.extent.clipboard.Clipboard;
 import com.sk89q.worldedit.extent.clipboard.io.ClipboardFormat;
 import com.sk89q.worldedit.extent.clipboard.io.ClipboardFormats;
 import com.sk89q.worldedit.extent.clipboard.io.ClipboardReader;
-import com.sk89q.worldedit.function.operation.ForwardExtentCopy;
 import com.sk89q.worldedit.function.operation.Operation;
 import com.sk89q.worldedit.function.operation.Operations;
 import com.sk89q.worldedit.math.BlockVector3;
-import com.sk89q.worldedit.regions.CuboidRegion;
-import com.sk89q.worldedit.regions.Region;
 import com.sk89q.worldedit.session.ClipboardHolder;
 import com.sk89q.worldedit.world.World;
 import org.bukkit.Bukkit;
@@ -34,12 +29,9 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
-import org.bukkit.entity.Zombie;
-import org.bukkit.util.Vector;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.awt.geom.AffineTransform;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -61,10 +53,10 @@ public class MainCommand implements CommandExecutor, TabCompleter {
             if(!(sender instanceof Player)) sender.sendMessage(Main.PREFIX + "§cYou must be a player to execute further commands!");
             Player p = ((Player) sender);
             if(args[0].equalsIgnoreCase("gui")) {
-                if(!hasPermission(p, "game.gui")) return false;
+                if(!checkPermission(p, "game.gui")) return false;
                 GuiUtils.open(new MainGUI(), p);
             } else if(args[0].equalsIgnoreCase("lang")) {
-                if(!hasPermission(p, "lang")) return false;
+                if(!checkPermission(p, "lang")) return false;
                 if(args.length != 2) {
                     sender.sendMessage(Main.PREFIX + translate("::command.lang.error"));
                     return false;
@@ -74,13 +66,13 @@ public class MainCommand implements CommandExecutor, TabCompleter {
                 Main.getInstance().saveConfig();
                 sender.sendMessage(Main.PREFIX + translate("::command.lang.success", args[1]));
             } else if(args[0].equalsIgnoreCase("debug")) {
-                if(!hasPermission(p, "debug")) return false;
+                if(!checkPermission(p, "debug")) return false;
                 Translate.debug();
                 sender.sendMessage(Main.PREFIX + "§eDebug output in console!");
             } else if(args[0].equalsIgnoreCase("help")) {
                 sender.sendMessage(Main.PREFIX + "§cDefend§6Lützerath\n§bby §a§lDwarslooper\n§bRunning §cUNSTABLE §aDEV-0.1\n§8----------------\n§bFor more information visit §9§n§odwarslooper.com/defluetzi§b!\n§cNotice this is a Dev-Build! Do not use this on production!");
             } else if(args[0].equalsIgnoreCase("reload")) {
-                if(!hasPermission(p, "reload")) return false;
+                if(!checkPermission(p, "reload")) return false;
                 //Leave this in ^^
                 //Utils.checkConfig();
                 for(Arena a : ArenaManager.ARENAS.values()) {
@@ -93,7 +85,7 @@ public class MainCommand implements CommandExecutor, TabCompleter {
                 SettingManager.loadSettings();
                 sender.sendMessage(Main.PREFIX + translate("::command.reload.success"));
             } else if(args[0].equalsIgnoreCase("translate")) {
-                if(!hasPermission(p, "translate")) return false;
+                if(!checkPermission(p, "translate")) return false;
                 if(args.length < 2) {
                     sender.sendMessage(Main.PREFIX + translate("::command.translate.error"));
                     return false;
@@ -104,7 +96,7 @@ public class MainCommand implements CommandExecutor, TabCompleter {
                 sender.sendMessage(Main.PREFIX + "§a" + translate(String.join(" ", text)));
 
             } else if(args[0].equalsIgnoreCase("lap")) {
-                if(!hasPermission(p, "admin")) return false;
+                if(!checkPermission(p, "admin")) return false;
 
                 assert sender instanceof Player;
 
@@ -138,7 +130,7 @@ public class MainCommand implements CommandExecutor, TabCompleter {
                 }
 
             } else if(args[0].equalsIgnoreCase("create")) {
-                if(!hasPermission(p, "arena.create")) return false;
+                if(!checkPermission(p, "arena.create")) return false;
                 if(args.length != 2) {
                     sender.sendMessage(Main.PREFIX + translate("::command.create.error"));
                     return false;
@@ -156,7 +148,7 @@ public class MainCommand implements CommandExecutor, TabCompleter {
                     return false;
                 }
             } else if(args[0].equalsIgnoreCase("edit")) {
-                if(!hasPermission(p, "arena.edit")) return false;
+                if(!checkPermission(p, "arena.edit")) return false;
                 if(args.length != 2) {
                     sender.sendMessage(Main.PREFIX + translate("::command.edit.error"));
                     return false;
@@ -168,7 +160,7 @@ public class MainCommand implements CommandExecutor, TabCompleter {
                     sender.sendMessage(Main.PREFIX + translate("::command.edit.not_existing", args[1]));
                 }
             } else if(args[0].equalsIgnoreCase("loadin")) {
-                if(!hasPermission(p, "admin")) return false;
+                if(!checkPermission(p, "admin")) return false;
                 if(args.length != 4) {
                     sender.sendMessage(Main.PREFIX + translate("§cdebug.fail"));
                     return false;
@@ -193,12 +185,12 @@ public class MainCommand implements CommandExecutor, TabCompleter {
                 }
 
                 if(args[2].equalsIgnoreCase("reset")) {
-                    if(!hasPermission(p, "game.reset")) return false;
+                    if(!checkPermission(p, "game.reset")) return false;
                     sender.sendMessage(Main.PREFIX + translate("::game.reset.success", args[1]));
                     LobbyHandler.resetGame(a);
                     return true;
                 } else if(args[2].equalsIgnoreCase("create")) {
-                    if(!hasPermission(p, "game.create")) return false;
+                    if(!checkPermission(p, "game.create")) return false;
                     int status = LobbyHandler.createGame(a, p);
                     if(status == 1) {
                         sender.sendMessage(Main.PREFIX + translate("::game.create.success", args[1]));
@@ -216,15 +208,15 @@ public class MainCommand implements CommandExecutor, TabCompleter {
                     return false;
                 }
                 if(args[2].equalsIgnoreCase("join")) {
-                    if(!hasPermission(p, "game.join")) return false;
+                    if(!checkPermission(p, "game.join")) return false;
                     LobbyHandler.addToGame(gl, (p));
                 } else if(args[2].equalsIgnoreCase("leave")) {
                     LobbyHandler.removeFromGame(gl, (p));
                 } else if(args[2].equalsIgnoreCase("start")) {
-                    if(!hasPermission(p, "game.start")) return false;
+                    if(!checkPermission(p, "game.start")) return false;
                     LobbyHandler.startGame(gl);
                 } else if(args[2].equalsIgnoreCase("setbal")) {
-                    if(!hasPermission(p, "game.setbal")) return false;
+                    if(!checkPermission(p, "game.setbal")) return false;
                     int newbal;
                     try {
                         newbal = Integer.parseInt(args[3]);
@@ -234,7 +226,7 @@ public class MainCommand implements CommandExecutor, TabCompleter {
                     }
                     gl.setBalance(newbal);
                 } else if(args[2].equalsIgnoreCase("spawn")) {
-                    if(!hasPermission(p, "admin")) return false;
+                    if(!checkPermission(p, "admin")) return false;
                     if(args.length != 4) {
                         sender.sendMessage(Main.PREFIX + translate("::command.spawn.error", args[1]));
                         return false;
@@ -246,7 +238,7 @@ public class MainCommand implements CommandExecutor, TabCompleter {
                     }
                     SchematicManager.paste(f.getDisplayAt(), f.getFile(), true);
                 } else if(args[2].equalsIgnoreCase("kick")) {
-                    if(!hasPermission(p, "game.kick")) return false;
+                    if(!checkPermission(p, "game.kick")) return false;
                     if(args.length != 4) {
                         sender.sendMessage(Main.PREFIX + translate("::game.kick.specify_player"));
                         return false;
@@ -271,10 +263,10 @@ public class MainCommand implements CommandExecutor, TabCompleter {
                 }
                 Arena a = ArenaManager.getByName(args[1]);
                 if(args[2].equalsIgnoreCase("add")) {
-                    if(!hasPermission(p, "assets.add")) return false;
+                    if(!checkPermission(p, "assets.add")) return false;
                     AssetSetup.next((p), args[1]);
                 } else if(args[2].equalsIgnoreCase("delete")) {
-                    if(!hasPermission(p, "assets.delete")) return false;
+                    if(!checkPermission(p, "assets.delete")) return false;
                     if(args.length < 4) {
                         sender.sendMessage(Main.PREFIX + translate("::command.asset.error"));
                         return false;
@@ -287,10 +279,10 @@ public class MainCommand implements CommandExecutor, TabCompleter {
                     GameAssetManager.editing_asset.put((p), asset);
                     GuiUtils.open(new ConfirmGUI(translate("::setup.asset.delete.prompt", asset.getId()), "DELETE_ASSET"), (p));
                 } else if(args[2].equalsIgnoreCase("list")) {
-                    if(!hasPermission(p, "assets.other")) return false;
+                    if(!checkPermission(p, "assets.other")) return false;
                     ArenaManager.getAssetList(args[1]).forEach(value -> sender.sendMessage(Main.PREFIX + value));
                 } else if(args[2].equalsIgnoreCase("info")) {
-                    if(!hasPermission(p, "assets.other")) return false;
+                    if(!checkPermission(p, "assets.other")) return false;
                     if(args.length < 4) {
                         sender.sendMessage(Main.PREFIX + translate("::command.asset.error"));
                         return false;
@@ -357,13 +349,17 @@ public class MainCommand implements CommandExecutor, TabCompleter {
         return list;
     }
 
-    public static boolean hasPermission(Player p, String permission) {
-        String permFormatted = "defluetzi." + permission;
-        if(p.hasPermission(permFormatted) || p.hasPermission("defluetzi.*") || p.getUniqueId().toString().equals("9c305009-6007-4294-ac00-44357d52cae3")) return true;
+    public static boolean checkPermission(Player p, String permission) {
+        if(checkPermissionSilent(p, permission)) return true;
         else {
-            p.sendMessage(Main.PREFIX + translate("::text.no_permission", permFormatted));
+            p.sendMessage(Main.PREFIX + translate("::text.no_permission", permission));
         }
         return false;
     }
+    public static boolean checkPermissionSilent(Player p, String permission) {
+        String permFormatted = "defluetzi." + permission;
+        return p.hasPermission(permFormatted) || p.hasPermission("defluetzi.*") || p.getUniqueId().toString().equals("9c305009-6007-4294-ac00-44357d52cae3");
+    }
+
 
 }

@@ -1,7 +1,6 @@
 package com.dwarslooper.luetzidefense.listeners;
 
 import com.dwarslooper.luetzidefense.Main;
-import com.dwarslooper.luetzidefense.StackCreator;
 import com.dwarslooper.luetzidefense.arena.Arena;
 import com.dwarslooper.luetzidefense.arena.ArenaManager;
 import com.dwarslooper.luetzidefense.arena.GameAsset;
@@ -24,14 +23,12 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryAction;
 import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.util.FileUtil;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Locale;
 
 import static com.dwarslooper.luetzidefense.Translate.translate;
-import static com.dwarslooper.luetzidefense.commands.MainCommand.hasPermission;
+import static com.dwarslooper.luetzidefense.commands.MainCommand.checkPermission;
 
 
 public class ClickListener implements Listener {
@@ -195,7 +192,7 @@ public class ClickListener implements Listener {
             ConfigurationSection section = Main.config.getConfiguration().getConfigurationSection("arenas").getConfigurationSection(ARENA_ID);
 
             if(e.getCurrentItem().getItemMeta().getDisplayName().contains(translate("::mapsetting.delete.title"))) {
-                if(!hasPermission(((Player) e.getWhoClicked()), "arena.delete")) return;
+                if(!checkPermission(((Player) e.getWhoClicked()), "arena.delete")) return;
                 GuiUtils.open(new ConfirmGUI(translate("::confirm.delete_arena.prompt", ARENA_ID), "DELETE_ARENA"), ((Player) e.getWhoClicked()));
             } else if(e.getCurrentItem().getItemMeta().getDisplayName().contains(translate("::mapsetting.schem.title"))) {
                 e.getWhoClicked().sendMessage(Main.PREFIX + translate("::mapsetting.schem.expl"));

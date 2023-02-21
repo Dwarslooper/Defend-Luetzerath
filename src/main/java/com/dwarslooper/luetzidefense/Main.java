@@ -10,26 +10,18 @@ import com.dwarslooper.luetzidefense.characters.activist.Protester;
 import com.dwarslooper.luetzidefense.characters.enemy.Policeman;
 import com.dwarslooper.luetzidefense.characters.enemy.RweWorker;
 import com.dwarslooper.luetzidefense.commands.MainCommand;
-import com.dwarslooper.luetzidefense.game.GameLobby;
 import com.dwarslooper.luetzidefense.game.LobbyHandler;
-import com.dwarslooper.luetzidefense.gui.ClickableItem;
 import com.dwarslooper.luetzidefense.gui.GuiUtils;
 import com.dwarslooper.luetzidefense.listeners.*;
 import org.bukkit.Bukkit;
-import org.bukkit.command.Command;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -130,7 +122,7 @@ public final class Main extends JavaPlugin {
             getServer().getConsoleSender().sendMessage(PREFIX + "§aConfig-Version is up to date! Awesome!");
         } else {
             for(Player p : Bukkit.getOnlinePlayers()) {
-                if(MainCommand.hasPermission(p, "notify")) p.sendMessage(updateMessage);
+                if(MainCommand.checkPermissionSilent(p, "notify")) p.sendMessage(updateMessage);
             }
             getServer().getConsoleSender().sendMessage(Main.PREFIX + updateMessage);
             upToDate = false;
@@ -161,7 +153,6 @@ public final class Main extends JavaPlugin {
 
         GuiUtils.register();
         ArenaManager.reload();
-
 
     }
 

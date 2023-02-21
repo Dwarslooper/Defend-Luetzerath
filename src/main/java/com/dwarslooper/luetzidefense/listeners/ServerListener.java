@@ -6,26 +6,21 @@ import com.dwarslooper.luetzidefense.SettingManager;
 import com.dwarslooper.luetzidefense.commands.MainCommand;
 import com.dwarslooper.luetzidefense.game.GameLobby;
 import com.dwarslooper.luetzidefense.game.LobbyHandler;
-import com.dwarslooper.luetzidefense.gui.ShopGUI;
 import org.bukkit.Material;
 import org.bukkit.entity.ArmorStand;
-import org.bukkit.entity.Item;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
-import org.bukkit.event.block.BlockExplodeEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
-import org.bukkit.event.entity.EntityExplodeEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import static com.dwarslooper.luetzidefense.game.LobbyHandler.GAMES;
 import static com.dwarslooper.luetzidefense.game.LobbyHandler.isIngame;
@@ -51,7 +46,7 @@ public class ServerListener implements Listener {
 
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
-        if(MainCommand.hasPermission(e.getPlayer(), "notify")) {
+        if(MainCommand.checkPermissionSilent(e.getPlayer(), "notify")) {
             if(!Main.upToDate) {
                 e.getPlayer().sendMessage(Main.updateMessage);
             }
