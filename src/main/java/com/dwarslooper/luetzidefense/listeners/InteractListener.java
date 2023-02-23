@@ -100,7 +100,6 @@ public class InteractListener implements Listener {
                         bomb.setCanMobPickup(false);
                         bomb.setHealth(1000);
                         bomb.setVelocity((e.getPlayer().getLocation().getDirection().multiply(0.5)).multiply(lobby.getSkillsThrow().get(e.getPlayer()) + 1));
-                        ShopGUI.cancelExplosion.add(bomb);
                         lobby.getDeleteOnReset().add(bomb);
                         e.setCancelled(true);
 

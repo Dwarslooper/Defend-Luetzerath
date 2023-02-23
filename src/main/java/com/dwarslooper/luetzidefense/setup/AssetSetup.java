@@ -1,10 +1,12 @@
 package com.dwarslooper.luetzidefense.setup;
 
 import com.dwarslooper.luetzidefense.Main;
+import com.dwarslooper.luetzidefense.Screen;
+import com.dwarslooper.luetzidefense.StackCreator;
 import com.dwarslooper.luetzidefense.arena.GameAsset;
-import com.dwarslooper.luetzidefense.gui.ConfirmGUI;
-import com.dwarslooper.luetzidefense.gui.GuiUtils;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 
 import java.util.HashMap;
@@ -76,7 +78,22 @@ public class AssetSetup {
             asset.setDisplayAt(p.getLocation());
             setupSteps.remove(p);
             Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), () -> {
-                GuiUtils.open(new ConfirmGUI(translate("::setup.asset.prompt"), "REGISTER_ASSET"), p);
+                Screen.getRegistered("confirm")
+                        .addButton(13, StackCreator.createItem(Material.PAPER, 1, translate("::setup.asset.prompt")))
+                        .addInteraction(10, () -> {
+                            ConfigurationSection cs = Main.config.getConfiguration().createSection("arenas." + asset.getArena() + ".assets." + asset.getId());
+                            cs.set("id", asset.getId());
+                            cs.set("name", asset.getDisplayName());
+                            cs.set("file", asset.getFileName() + ".schem");
+                            cs.set("cost", asset.getCost());
+                            cs.set("location", asset.getDisplayAt());
+                            cs.set("ignoreair", asset.getIgnoreAir());
+                            Main.config.save();
+                            p.sendMessage(Main.PREFIX + translate("::setup.asset.success", asset.getId()));
+                            p.closeInventory();
+                        })
+                        .addInteraction(16, p::closeInventory)
+                        .open(p);
             });
         }
         newAsset.put(p, asset);

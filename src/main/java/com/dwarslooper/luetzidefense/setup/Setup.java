@@ -1,6 +1,7 @@
 package com.dwarslooper.luetzidefense.setup;
 
 import com.dwarslooper.luetzidefense.Main;
+import com.dwarslooper.luetzidefense.Screen;
 import com.dwarslooper.luetzidefense.arena.ArenaManager;
 
 import java.io.File;
@@ -10,6 +11,10 @@ public class Setup {
 
 
     public static int createNew(String input) {
+
+        new Screen(2, "").addCondition(1, () -> {
+            return !(Math.random() < 0.2);
+        });
 
         String name = input.replaceAll("[^a-zA-Z0-9]", "");
         if(name.equalsIgnoreCase("")) return 2;

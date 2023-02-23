@@ -24,6 +24,7 @@ import com.sk89q.worldedit.session.ClipboardHolder;
 import com.sk89q.worldedit.world.World;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -276,8 +277,17 @@ public class MainCommand implements CommandExecutor, TabCompleter {
                         sender.sendMessage(Main.PREFIX + translate("::command.asset.not_existing", args[1]));
                         return false;
                     }
-                    GameAssetManager.editing_asset.put((p), asset);
-                    GuiUtils.open(new ConfirmGUI(translate("::setup.asset.delete.prompt", asset.getId()), "DELETE_ASSET"), (p));
+                    Screen.getRegistered("confirm")
+                            .addButton(13, StackCreator.createItem(Material.PAPER, 1, translate("::setup.asset.delete.prompt", asset.getId())))
+                            .addInteraction(10, () -> {
+                                Main.config.getConfiguration().set("arenas." + asset.getArena() + ".assets." + asset.getId(), null);
+                                Main.config.save();
+                                ArenaManager.reload();
+                                p.closeInventory();
+                                p.sendMessage(Main.PREFIX + translate("::setup.asset.delete.success", asset.getId()));
+                            })
+                            .addInteraction(16, p::closeInventory)
+                            .open(p);
                 } else if(args[2].equalsIgnoreCase("list")) {
                     if(!checkPermission(p, "assets.other")) return false;
                     ArenaManager.getAssetList(args[1]).forEach(value -> sender.sendMessage(Main.PREFIX + value));

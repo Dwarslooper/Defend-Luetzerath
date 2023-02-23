@@ -54,7 +54,6 @@ public class SchematicManager {
                 if(file.getName().equalsIgnoreCase("arena.schem")) {
                     Arena a = ArenaManager.getByName(file.getParentFile().getName());
                     if(a != null) {
-                        Main.LOGGER.info("Set status to 0, finished with map reset!");
                         a.setStatus(0);
                         a.updateSigns();
                     }

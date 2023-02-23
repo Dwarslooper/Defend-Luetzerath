@@ -43,7 +43,6 @@ public class ChatListener implements Listener {
 
         if(SettingManager.shortCommands) {
             String msgRaw = e.getMessage().replaceFirst("/", "");
-            Main.LOGGER.info(msgRaw);
             if(msgRaw.equalsIgnoreCase("start") || msgRaw.equalsIgnoreCase("leave") || msgRaw.equalsIgnoreCase("reset")) {
                 e.setCancelled(true);
                 boolean found = false;

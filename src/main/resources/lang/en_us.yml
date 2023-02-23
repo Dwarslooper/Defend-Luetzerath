@@ -131,6 +131,8 @@ ingame.gui.skills.speed.desc: §aIncrease your speed
 ingame.gui.skills.throw.title: §cThrowing
 ingame.gui.skills.throw.desc: §aThrow things further
 
+ingame.gui.skills.max_level: §cYou have reached the maximum level!
+
 ingame.hud.start: §a§lStart game
 ingame.hud.leave: §c§lLeave game
 

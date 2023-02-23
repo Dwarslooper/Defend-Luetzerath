@@ -29,7 +29,7 @@ public class Utils {
         double pitch = Math.asin(direction.getY());
         Location newLoc = entity1.getLocation().setDirection(direction);
         newLoc.setYaw((float) Math.toDegrees(yaw) * -1);
-        newLoc.setPitch((float) Math.toDegrees(pitch) * -1);
+        newLoc.setPitch((float) Math.toDegrees(pitch));
         entity1.teleport(newLoc);
     }
 

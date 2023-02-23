@@ -13,6 +13,7 @@ import com.dwarslooper.luetzidefense.commands.MainCommand;
 import com.dwarslooper.luetzidefense.game.LobbyHandler;
 import com.dwarslooper.luetzidefense.gui.GuiUtils;
 import com.dwarslooper.luetzidefense.listeners.*;
+import com.dwarslooper.luetzidefense.setup.ScreenInit;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -66,7 +67,6 @@ public final class Main extends JavaPlugin {
         SettingManager.checkConfig();
         PREFIX = "§8[§cD§6L§8] ";
 
-
         try {
             InputStream is = getResource("config.yml");
             FileConfiguration comp1 = YamlConfiguration.loadConfiguration(new InputStreamReader(is));
@@ -81,6 +81,7 @@ public final class Main extends JavaPlugin {
         config = new Config("data.yml", getDataFolder());
         signs = new Config("signs.yml", getDataFolder());
         Translate.init();
+        ScreenInit.initScreens();
         SettingManager.loadSettings();
 
         LOGGER.info("                                                                                                                                                                                                   \n" +
@@ -150,8 +151,8 @@ public final class Main extends JavaPlugin {
         pluginManager.registerEvents(new InteractListener(), this);
         pluginManager.registerEvents(new PlayerListener(), this);
         pluginManager.registerEvents(new ServerListener(), this);
+        pluginManager.registerEvents(new Screen(1, ""), this);
 
-        GuiUtils.register();
         ArenaManager.reload();
 
     }

@@ -132,6 +132,8 @@ ingame.gui.skills.speed.desc: §aErhöhe deine Schnelligkeit
 ingame.gui.skills.throw.title: §cWerfen
 ingame.gui.skills.throw.desc: §aWerfe Gegenstände weiter
 
+ingame.gui.skills.max_level: §cDu hast das maximale Level erreicht!
+
 ingame.hud.start: §a§lSpiel starten
 ingame.hud.leave: §c§lSpiel verlassen
 

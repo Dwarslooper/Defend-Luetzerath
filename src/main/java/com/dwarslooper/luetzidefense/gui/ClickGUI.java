@@ -6,21 +6,14 @@ import org.bukkit.inventory.Inventory;
 public abstract class ClickGUI {
 
     String title;
-    int id;
 
-    public ClickGUI(String title, int id) {
+    public ClickGUI(String title) {
         this.title = title;
-        this.id = id;
     }
 
     public String getTitle() {
         return title;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    @SuppressWarnings("deprecation")
     public abstract Inventory open(Player player);
 }
