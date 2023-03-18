@@ -3,7 +3,7 @@
 </p>
 
 <h1 align="center">Defend Luetzerath</h1>
-<p align="center">A Minecraft minigame made in a week or so</p>
+<p align="center">A Minecraft minigame made cuz i was bored</p>
 
 <div align="center">
     <a href="https://dwarslooper.com/discord"><img src="https://img.shields.io/discord/687682739297845269?logo=discord&style=for-the-badge" alt="Discord"/></a>
