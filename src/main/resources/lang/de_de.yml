@@ -1,10 +1,3 @@
-activist.monk: Dunkler Mönch
-activist.aggressive: Aggressiver
-activist.protester: Demonstrant
-activist.chemist: Chemiker
-enemy.rweworker: RWE Mitarbeiter
-enemy.police: Polizist
-
 gui.main: Hauptmenü
 gui.characters: §2Charaktere
 gui.shop: §2Shop
@@ -18,9 +11,15 @@ gui.description.skills: §aLerne neue Skills
 gui.description.shop: §aKaufe speizielle Items
 gui.description.settings: §aKonfiguriere das Spiel
 gui.confirm: Aktion bestätigen
-
 gui.action.confirm: §a§lBestätigen
 gui.action.cancel: §c§lAbbrechen
+
+activist.monk: Dunkler Mönch
+activist.aggressive: Aggressiver
+activist.protester: Demonstrant
+activist.chemist: Chemiker
+enemy.rweworker: RWE Mitarbeiter
+enemy.police: Polizist
 
 mapsetting.center.title: §eZentralpunk
 mapsetting.center.desc: §aVon wo die Map-Schematic geladen wird
@@ -72,15 +71,12 @@ game.kick.specify_player: §cDu musst einen Spieler angeben!
 game.kick.no_such_player: §cDer Spieler §6%s% §cist nicht in diesem Spiel!
 game.kick.success: §cDer Spieler §6%s% §cwurde rausgeworfen!
 game.kick.message: §cDu wurdest aus §6%s% §crausgeworfen!
-
 game.message.already_in_game: §cDu bist bereits in diesem Spiel
 game.message.already_started: §cDas Spiel ist bereits gestartet!
 game.message.not_in_game: §cDu bist in keinem Spiel!
 game.message.joined: §aDu bist %s% §abeigetreten!
 game.message.left: §aDu hast %s% §averlassen!
 game.message.ratelimited: §cBitte warte einen Moment!
-
-
 game.status.inactive: §7§lINAKTIV
 game.status.waiting: §e§lSTARTET
 game.status.running: §a§lLÄUFT
@@ -88,22 +84,32 @@ game.status.resetting: §c§lZURÜCKSETZEN
 game.status.unknown: §d§lUNBEKANNT
 
 ingame.blocked_command: "§cDieser Befehl kann während eines Spiels nicht genutzt werden!"
-
 ingame.protester_death: "§eEin Demonstrant ist gestorben!"
-
-
 ingame.asset.buy: §e§o(Klicken zum kaufen §8§o| §6§o%s%◎§e§o)
 ingame.asset.too_expensive: §cDu hast nicht genug ◎ für §6%s%§c!
 ingame.asset.already_bought: §cDu hast §6%s% §cbereits gekauft!
-
 ingame.lost.title: "§c§lDORF GERÄUMT!"
 ingame.lost.subtitle: "§eBeschützt für §6%s%d§e, §6%s%h§e, §6%s%m§e, §6%s%s§e!"
 ingame.lost.chat: "§cOh nein! Das Dorf wurde geräumt! Aber gute Leistung, nächstes mal schaffst du es bestimmt länger! §4Die Arena wird in §620 §4Sekunden zurückgesetzt!"
 ingame.welcome.chat: "§aWillkommen im Dorf §6%s%§a! Helfe den anderen Aktivisten das Dorf vor RWE zu beschützen, durch das Lernen von neuen Skills, das Dazuholen von stärkeren Mitgliedern und das Bauen von Strukturen"
 ingame.welcome.title: §a§lWillkommen!
 ingame.welcome.subtitle: §eSchön dass du dabei bist, §6%s%§e!
-
-ingame.talk.water: §c§oAaah!
+ingame.gui.shop.tnt.title: §cTNT
+ingame.gui.shop.molotow.title: §cMolotow
+ingame.gui.shop.water.title: §cWasser
+ingame.gui.shop.buff.title: §cBuff.
+ingame.gui.shop.sword.title: §cSchwert
+ingame.gui.shop.mud.title: §cMatsch
+ingame.gui.skills.pe.title: §cKampfsport
+ingame.gui.skills.pe.desc: §aFüge Gegnern mehr Schaden zu
+ingame.gui.skills.points.title: §cPunkte
+ingame.gui.skills.points.desc: §aSammle mehr punkte für deine Aktionen
+ingame.gui.skills.speed.title: §cSchnelligkeit
+ingame.gui.skills.speed.desc: §aErhöhe deine Schnelligkeit
+ingame.gui.skills.throw.title: §cWerfen
+ingame.gui.skills.throw.desc: §aWerfe Gegenstände weiter
+ingame.gui.skills.max_level: §cDu hast das maximale Level erreicht!
+ingame.talk.water: §c§oHey!
 ingame.talk.enemy:
   - Keine Zeit zu reden!
   - Einfach raus aus dem Dorf.
@@ -115,31 +121,11 @@ ingame.talk.fellow:
   - F*ck RWE
   - Das Dorf bleibt!
   - Räumung? Nicht mit uns!
-
-ingame.gui.shop.tnt.title: §cTNT
-ingame.gui.shop.molotow.title: §cMolotow
-ingame.gui.shop.water.title: §cWasser
-ingame.gui.shop.buff.title: §cBuff.
-ingame.gui.shop.sword.title: §cSchwert
-ingame.gui.shop.mud.title: §cMatsch
-
-ingame.gui.skills.pe.title: §cKampfsport
-ingame.gui.skills.pe.desc: §aFüge Gegnern mehr Schaden zu
-ingame.gui.skills.points.title: §cPunkte
-ingame.gui.skills.points.desc: §aSammle mehr punkte für deine Aktionen
-ingame.gui.skills.speed.title: §cSchnelligkeit
-ingame.gui.skills.speed.desc: §aErhöhe deine Schnelligkeit
-ingame.gui.skills.throw.title: §cWerfen
-ingame.gui.skills.throw.desc: §aWerfe Gegenstände weiter
-
-ingame.gui.skills.max_level: §cDu hast das maximale Level erreicht!
-
 ingame.hud.start: §a§lSpiel starten
 ingame.hud.leave: §c§lSpiel verlassen
 
 confirm.delete_arena.prompt: §cArena §6§o%s% §cpermanent löschen?
 confirm.delete_arena.success: §aDie Arena §6%s% §awurde erfolgreich gelöscht!
-
 confirm.delete_spawns.prompt: §cAlle Spawns in §6%s% §clöschen?
 confirm.delete_spawns.success: §aAlle Spawns in §6%s% §agelöscht!
 
@@ -148,7 +134,6 @@ text.skills: '§aSkills§8: §e§o(Rechtsklick)'
 text.no_permission: '§cDir fehlt die Berechtigung §6%s%§c!'
 
 command.short.only_ingame: §cDu musst in einem Spiel sein um diesen Befehl zu benutzen!
-
 command.lang.error: §cDu musst eine Sprache angeben!
 command.lang.success: §aDie Sprache wurde auf §6%s% §agesetzt!
 command.reload.success: §aConfig-Dateien reloaded! Es kann sein dass ein Serverneustart erdorderlich ist um alle Änderungen zu übernehmen!

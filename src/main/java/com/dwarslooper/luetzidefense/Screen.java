@@ -39,9 +39,14 @@ public class Screen implements Listener {
         new ArrayList<>(screens).forEach(screen -> screen.onClick(event));
     }
 
+    private final int size;
+    private final String title;
+
     public Screen(int size, String title) {
         screens.add(this);
         inventory = Bukkit.createInventory(null, 9*size, title);
+        this.size = size;
+        this.title = title;
     }
 
     public Inventory getInventory() {
@@ -71,6 +76,12 @@ public class Screen implements Listener {
             if(getInventory().getItem(i) == null) getInventory().setItem(i, StackCreator.createItem(material, 1, " "));
         }
         return this;
+    }
+
+    public Screen clone() {
+        Screen val;
+        val = this;
+        return val;
     }
 
     public Screen addButton(int slot, ItemStack itemStack, Runnable run, InventoryAction... actionTypes) {
