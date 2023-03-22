@@ -24,10 +24,12 @@ Take a look at our [documentations](https://dwarslooper.com/documentation/defend
 3. Restart your server
 
 ### Dependencies
-- [Multiverse-Core](https://dev.bukkit.org/projects/multiverse-core)
 - [Fast-Async-Worldedit](https://www.spigotmc.org/resources/fastasyncworldedit.13932/)
 
-⚠️ _Make sure to have both plugins installed on their latest versions!_ ⚠️
+⚠️ _Make sure to have all plugins installed on their latest versions!_ ⚠️
+
+### Compatibilities
+- [Multiverse-Core](https://dev.bukkit.org/projects/multiverse-core)
 
 ## Contributions
 We will review and help with all reasonable pull requests as long as you follow the guidelines below:
