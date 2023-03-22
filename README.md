@@ -6,7 +6,7 @@
 <p align="center">A Minecraft minigame made cuz i was bored</p>
 
 <div align="center">
-    <a href="https://dwarslooper.com/discord"><img src="https://img.shields.io/discord/687682739297845269?logo=discord&style=for-the-badge" alt="Discord"/></a>
+    <a href="https://dwarslooper.com/?re=discord"><img src="https://img.shields.io/discord/1085606686007500811?logo=discord&style=for-the-badge" alt="Discord"/></a>
     <br>
     <img src="https://img.shields.io/github/v/tag/Dwarslooper/Defend-Luetzerath?style=for-the-badge" alt="Releases"/>
     <img src="https://img.shields.io/github/last-commit/Dwarslooper/Defend-Luetzerath?style=for-the-badge" alt="Last commit"/>
