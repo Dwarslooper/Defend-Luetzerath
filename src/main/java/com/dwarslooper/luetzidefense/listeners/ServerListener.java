@@ -32,16 +32,6 @@ public class ServerListener implements Listener {
         for(GameLobby gl : GAMES) {
             gl.tick();
         }
-
-        ArrayList<Player> remove = new ArrayList<>();
-        LobbyHandler.interactCooldown.forEach((player, integer) -> {
-            if(integer > 0) {
-                LobbyHandler.interactCooldown.put(player, (integer - 1));
-            } else {
-                remove.add(player);
-            }
-        });
-        remove.forEach(integer -> LobbyHandler.interactCooldown.remove(integer));
     }
 
     @EventHandler

@@ -36,10 +36,7 @@ import org.jetbrains.annotations.Nullable;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 import static com.dwarslooper.luetzidefense.Translate.translate;
 import static com.dwarslooper.luetzidefense.game.LobbyHandler.GAMES;
@@ -51,8 +48,10 @@ public class MainCommand implements CommandExecutor, TabCompleter {
         if(args.length == 0) {
             sender.sendMessage(Main.PREFIX + "§cDefend§6Lützerath\n§bby §a§lDwarslooper\n§bRunning §cUNSTABLE §aDEV-0.1");
         } else {
-            if(!(sender instanceof Player)) sender.sendMessage(Main.PREFIX + "§cYou must be a player to execute further commands!");
-            Player p = ((Player) sender);
+            if(!(sender instanceof Player p)) {
+                sender.sendMessage(Main.PREFIX + "§cYou must be a player to execute further commands!");
+                return false;
+            }
             if(args[0].equalsIgnoreCase("gui")) {
                 if(!checkPermission(p, "game.gui")) return false;
                 GuiUtils.open(new MainGUI(), p);
@@ -137,7 +136,7 @@ public class MainCommand implements CommandExecutor, TabCompleter {
                     return false;
                 }
 
-                String toRepl = args[1].replaceAll("[^a-zA-Z0-9]", "");
+                String toRepl = args[1].replaceAll("[^a-zA-Z0-9]", "").toLowerCase(Locale.ROOT);
 
                 if(Setup.createNew(args[1]) == 0) {
                     sender.sendMessage(Main.PREFIX + translate("::command.create.success", toRepl, toRepl));

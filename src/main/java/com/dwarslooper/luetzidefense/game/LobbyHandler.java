@@ -9,12 +9,13 @@ import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.UUID;
 
 import static com.dwarslooper.luetzidefense.Translate.translate;
 
 public class LobbyHandler {
 
-    public static HashMap<Player, Integer> interactCooldown = new HashMap<>();
+    public static HashMap<UUID, Long> interactCooldown = new HashMap<>();
     public static HashMap<Player, GameLobby> isIngame = new HashMap<>();
     public static ArrayList<GameLobby> GAMES = new ArrayList<>();
 
@@ -71,12 +72,21 @@ public class LobbyHandler {
     }
 
     public static boolean checkCooldown(Player p) {
-        if(interactCooldown.containsKey(p)) {
+        if(!onCooldown(p, Main.getInstance().getConfig().getInt("ratelimit"))) {
             p.sendMessage(Main.PREFIX + translate("::game.message.ratelimited"));
             return false;
-        } else {
-            interactCooldown.put(p, Main.getInstance().getConfig().getInt("ratelimit"));
         }
+        return true;
+    }
+
+    public static boolean onCooldown(Player player, int cooldown) {
+        if(interactCooldown.containsKey(player.getUniqueId())) {
+            long secondsLeft = ((interactCooldown.get(player.getUniqueId()) / 1000) + cooldown) - (System.currentTimeMillis() / 1000);
+            if(secondsLeft > 0) {
+                return false;
+            }
+        }
+        interactCooldown.put(player.getUniqueId(), System.currentTimeMillis());
         return true;
     }
 

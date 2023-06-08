@@ -3,7 +3,7 @@ version: '${project.version}'
 main: com.dwarslooper.luetzidefense.Main
 api-version: 1.19
 prefix: DL
-depend: [ Multiverse-Core, WorldEdit ]
+depend: [ WorldEdit ]
 authors: [ Dwarslooper ]
 description: Beschütze Lützerath vor RWE und rette so das Dorf!
 website: https://dwarslooper.com
