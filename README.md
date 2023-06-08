@@ -1,5 +1,5 @@
 <p align="center">
-<img src="https://dwarslooper.com/images/dl.jpg" alt="dl-logo" width="15%"/>
+<img src="http://legacy.dwarslooper.com/images/dl.jpg" alt="dl-logo" width="15%"/>
 </p>
 
 <h1 align="center">Defend Luetzerath</h1>
